@@ -2,15 +2,9 @@
 
 RegisterNewCommand GiveMeItem(int id, int count)
 {
-	if (!id)
+	if (!id || !count)
 	{
-		cout << "First argument wasn't given." << "\n";
-		return;
-	}
-
-	if (!count)
-	{
-		cout << "Second argument wasn't given." << "\n";
+		cout << "First or second argument wasn't given." << "\n";
 		return;
 	}
 

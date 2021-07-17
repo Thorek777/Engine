@@ -9,7 +9,7 @@ void MySQL_ExecuteQuery(string query)
 	conn = mysql_real_connect(conn, DB_HOST, DB_USER, DB_PASS, DB_BASE, 3306, NULL, 0);
 	if (conn)
 	{
-		cout << "Successfully connected with database." << "\n";
+		SendLog(0, "Successfully connected with database.");
 
 		if (query.length() > 0)
 		{
@@ -17,20 +17,23 @@ void MySQL_ExecuteQuery(string query)
 			if (!qstate)
 			{
 				res = mysql_store_result(conn);
-				cout << "Query has been sent!" << "\n \n";
+				SendLog(0, "Query has been sent!");
 			}
 			else
 			{
-				cout << "Query hasn't been sent: " << mysql_error(conn) << "\n \n";
+				string error = mysql_error(conn);
+				SendLog(1, "Query hasn't been sent: " + error + ".");
 			}
 		}
 		else
 		{
-			cout << "Query doesn't exist!" << "\n \n";
+			SendLog(1, "Query doesn't exist!");
+			exit(0);
 		}
 	}
 	else
 	{
-		cout << "Connection with database was failed." << "\n \n";
+		SendLog(1, "Connection with database was failed.");
+		exit(0);
 	}
 }

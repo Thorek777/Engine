@@ -11,19 +11,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Includes.h">
+    <ClInclude Include="Includes.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Items.h">
+    <ClInclude Include="Items.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Lenght.h">
+    <ClInclude Include="Lenght.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Config.h">
+    <ClInclude Include="Config.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Commands.h">
+    <ClInclude Include="Commands.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

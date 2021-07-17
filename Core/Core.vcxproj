@@ -151,11 +151,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Commands.h" />
-    <ClInclude Include="Config.h" />
-    <ClInclude Include="Includes.h" />
-    <ClInclude Include="Items.h" />
-    <ClInclude Include="Lenght.h" />
+    <ClInclude Include="Commands.hpp" />
+    <ClInclude Include="Config.hpp" />
+    <ClInclude Include="Includes.hpp" />
+    <ClInclude Include="Items.hpp" />
+    <ClInclude Include="Lenght.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Commands.cpp" />

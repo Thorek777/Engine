@@ -1,3 +1,4 @@
 #pragma once
 
-void GiveMeItem(int id, int count);
+#define RegisterNewCommand void
+RegisterNewCommand GiveMeItem(int id, int count);

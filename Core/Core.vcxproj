@@ -155,7 +155,6 @@
     <ClInclude Include="Config.hpp" />
     <ClInclude Include="Includes.hpp" />
     <ClInclude Include="Items.hpp" />
-    <ClInclude Include="Lenght.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Commands.cpp" />

@@ -1,6 +1,6 @@
 #include "Includes.hpp"
 
-void GiveMeItem(int id, int count)
+RegisterNewCommand GiveMeItem(int id, int count)
 {
 	if (!id)
 	{

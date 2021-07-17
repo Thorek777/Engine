@@ -17,9 +17,6 @@
     <ClInclude Include="Items.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Lenght.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Config.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>

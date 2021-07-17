@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Commands.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MySQL\Connector.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Items.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Logs.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Common\Includes.hpp">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Commands.hpp">
+      <Filter>Game\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.hpp">
+      <Filter>Game\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="MySQL\Connector.hpp">
+      <Filter>Game\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Items.hpp">
+      <Filter>Game\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Logs.hpp">
+      <Filter>Game\Source</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Common">
+      <UniqueIdentifier>{4b4779a4-f3c6-4411-bfa7-082567aa16a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{3d021d29-24db-40fb-90fc-2dd126b234a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Source">
+      <UniqueIdentifier>{76ab97da-65aa-443c-8e54-3d961374a976}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

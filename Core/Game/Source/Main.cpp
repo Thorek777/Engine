@@ -2,7 +2,6 @@
 
 int main()
 {
-	GiveMeItem(72702, 1);
-	system("pause");
+	SendLog(0, "Core has been started successfully but without instructions.");
 	return 0;
 }

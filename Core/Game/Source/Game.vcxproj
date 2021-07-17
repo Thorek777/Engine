@@ -18,26 +18,11 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Common\Includes.hpp" />
-    <ClInclude Include="Commands.hpp" />
-    <ClInclude Include="Config.hpp" />
-    <ClInclude Include="Items.hpp" />
-    <ClInclude Include="Logs.hpp" />
-    <ClInclude Include="MySQL\Connector.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Commands.cpp" />
-    <ClCompile Include="Items.cpp" />
-    <ClCompile Include="Logs.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MySQL\Connector.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{142cf52c-c478-4059-a88f-a60f70989a8a}</ProjectGuid>
-    <RootNamespace>Core</RootNamespace>
+    <ProjectGuid>{6ceea13d-7f18-4f51-b9b2-6e8af098f68b}</ProjectGuid>
+    <RootNamespace>Test</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -136,7 +121,6 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Program Files\MySQL\Connector C++ 8.0\include;C:\Program Files\MySQL\MySQL Server 8.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -154,7 +138,6 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Program Files\MySQL\Connector C++ 8.0\include;C:\Program Files\MySQL\MySQL Server 8.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -165,6 +148,20 @@
       <AdditionalDependencies>libmysql.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Commands.cpp" />
+    <ClCompile Include="Items.cpp" />
+    <ClCompile Include="Logs.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MySQL\Connector.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Commands.hpp" />
+    <ClInclude Include="Config.hpp" />
+    <ClInclude Include="Items.hpp" />
+    <ClInclude Include="Logs.hpp" />
+    <ClInclude Include="MySQL\Connector.hpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

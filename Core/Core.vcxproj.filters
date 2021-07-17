@@ -1,41 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Common">
+      <UniqueIdentifier>{dc27622c-364e-411e-b4c3-a409021eaaf5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="Game">
+      <UniqueIdentifier>{8f42169d-4c4a-4364-9137-0cd3ee17d67b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Source">
+      <UniqueIdentifier>{f1356de8-3311-403c-b0d8-1d59a1167f19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Source\MySQL">
+      <UniqueIdentifier>{d3a55452-15da-4268-9cf5-f1297c5c0704}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Includes.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Items.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Config.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Commands.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClCompile Include="Game\Source\Commands.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Source\Items.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Source\Main.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Source\MySQL\Connector.cpp">
+      <Filter>Game\Source\MySQL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Items.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Commands.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="Game\Source\Commands.hpp">
+      <Filter>Game\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Source\Config.hpp">
+      <Filter>Game\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Source\Items.hpp">
+      <Filter>Game\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Includes.hpp">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Source\MySQL\Connector.hpp">
+      <Filter>Game\Source\MySQL</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

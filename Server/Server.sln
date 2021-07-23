@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "Game\Source\Game.vcxproj", "{6CEEA13D-7F18-4F51-B9B2-6E8AF098F68B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{4CF20630-10C2-472B-8112-BED8C42F6B8F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{BBA9A9FC-F354-488F-9ABD-0B52B5613D4E}"
 	ProjectSection(SolutionItems) = preProject
-		Common\Include.hpp = Common\Include.hpp
+		Common\D_Includes.hpp = Common\D_Includes.hpp
+		Common\Namespaces.hpp = Common\Namespaces.hpp
+		Common\O_Includes.hpp = Common\O_Includes.hpp
 	EndProjectSection
 EndProject
 Global

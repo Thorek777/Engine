@@ -1,9 +1,10 @@
-#include "../../Common/Include.hpp"
-
-// To do: MD5 security for passwords.
+#include "../../Common/Namespaces.hpp"
+#include "../../Common/D_Includes.hpp"
+#include "../../Common/O_Includes.hpp"
 
 void Login(string login, string password)
 {
+	base = "account";
 	MySQL_ExecuteQuery("select login, password from account");
 
 	while (row = mysql_fetch_row(res2))
@@ -20,9 +21,9 @@ void Login(string login, string password)
 		else
 		{
 			cout << "Login and password is correct." << "\n";
+			SendLog(0, "Login step has been completed successfully. Login: " + login + ".");
 		}
 	}
 
-	res2 = 0;
-	SendLog(0, "Login step has been completed successfully. Login: " + login + ".");
+	MySQL_Clear();
 }

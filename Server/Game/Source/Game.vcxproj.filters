@@ -1,34 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Command.cpp" />
-    <ClCompile Include="Log.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MySQL\MySQL_Connector.cpp">
-      <Filter>MySQL</Filter>
-    </ClCompile>
-    <ClCompile Include="Boost\Boost_Connector.cpp">
-      <Filter>Boost</Filter>
-    </ClCompile>
-    <ClCompile Include="Auth.cpp" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{0cd5c6a0-38c7-4059-bc0d-cd54a4b09a09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Utils">
+      <UniqueIdentifier>{fec11665-f57a-41c4-8bef-5541e630d29f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Utils\MySQL">
+      <UniqueIdentifier>{93016286-82f4-4d3f-888c-3b782c529a02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Utils\Boost">
+      <UniqueIdentifier>{2b70b4a0-0662-478e-96b1-ba8491835154}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Command.hpp" />
-    <ClInclude Include="Log.hpp" />
-    <ClInclude Include="MySQL\MySQL_Connector.hpp">
-      <Filter>MySQL</Filter>
-    </ClInclude>
-    <ClInclude Include="Boost\Boost_Connector.hpp">
-      <Filter>Boost</Filter>
-    </ClInclude>
-    <ClInclude Include="Auth.hpp" />
+    <ClCompile Include="Utils\Log.cpp">
+      <Filter>Source\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Auth.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Command.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\Boost\Boost_Connector.cpp">
+      <Filter>Source\Utils\Boost</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\MySQL\MySQL_Connector.cpp">
+      <Filter>Source\Utils\MySQL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="MySQL">
-      <UniqueIdentifier>{0ea19279-0222-4cbd-81b9-7dcf0090fdfa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Boost">
-      <UniqueIdentifier>{e8170c9d-12a1-47a6-9bcd-1eb6e685a7af}</UniqueIdentifier>
-    </Filter>
+    <ClInclude Include="Utils\Log.hpp">
+      <Filter>Source\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.hpp">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Auth.hpp">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Command.hpp">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\Boost\Boost_Connector.hpp">
+      <Filter>Source\Utils\Boost</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\MySQL\MySQL_Connector.hpp">
+      <Filter>Source\Utils\MySQL</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

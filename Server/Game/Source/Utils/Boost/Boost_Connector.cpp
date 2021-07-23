@@ -1,4 +1,9 @@
-#include "../../../Common/Include.hpp"
+#include "../../../../Common/Namespaces.hpp"
+#include "../../../../Common/D_Includes.hpp"
+#include "../../../../Common/O_Includes.hpp"
+
+using namespace boost::asio;
+using ip::tcp;
 
 string Read(tcp::socket& socket)
 {

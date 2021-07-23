@@ -126,8 +126,9 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Program Files\MySQL\Connector C++ 8.0\lib64;C:\Program Files\MySQL\MySQL Server 8.0\lib;C:\Users\Admin\Documents\Visual Studio 2019\Projects\Core\Extern\boost_1_76_0\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libmysql.lib;..\..\..\Extern\boost_1_76_0\libs_new\libboost_date_time-vc142-mt-gd-x64-1_76.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files\MySQL\Connector C++ 8.0\lib64\vs14;C:\Program Files\MySQL\MySQL Server 8.0\lib;C:\Users\Admin\Documents\Visual Studio 2019\Projects\Core\Extern\boost_1_76_0\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libmysql.lib;mysqlcppconn.lib;..\..\..\Extern\boost_1_76_0\libs_new\libboost_date_time-vc142-mt-gd-x64-1_76.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -146,24 +147,24 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Program Files\MySQL\Connector C++ 8.0\lib64;C:\Program Files\MySQL\MySQL Server 8.0\lib;C:\Users\Admin\Documents\Visual Studio 2019\Projects\Core\Extern\boost_1_76_0\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libmysql.lib;..\..\..\Extern\boost_1_76_0\libs_new\libboost_date_time-vc142-mt-gd-x64-1_76.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files\MySQL\Connector C++ 8.0\lib64\vs14;C:\Program Files\MySQL\MySQL Server 8.0\lib;C:\Users\Admin\Documents\Visual Studio 2019\Projects\Core\Extern\boost_1_76_0\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libmysql.lib;mysqlcppconn.lib;..\..\..\Extern\boost_1_76_0\libs_new\libboost_date_time-vc142-mt-gd-x64-1_76.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Auth.cpp" />
     <ClCompile Include="Boost\Boost_Connector.cpp" />
-    <ClCompile Include="Commands.cpp" />
-    <ClCompile Include="Items.cpp" />
-    <ClCompile Include="Logs.cpp" />
+    <ClCompile Include="Command.cpp" />
+    <ClCompile Include="Log.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MySQL\MySQL_Connector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Auth.hpp" />
     <ClInclude Include="Boost\Boost_Connector.hpp" />
-    <ClInclude Include="Commands.hpp" />
-    <ClInclude Include="Config.hpp" />
-    <ClInclude Include="Items.hpp" />
-    <ClInclude Include="Logs.hpp" />
+    <ClInclude Include="Command.hpp" />
+    <ClInclude Include="Log.hpp" />
     <ClInclude Include="MySQL\MySQL_Connector.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Commands.cpp" />
-    <ClCompile Include="Items.cpp" />
-    <ClCompile Include="Logs.cpp" />
+    <ClCompile Include="Command.cpp" />
+    <ClCompile Include="Log.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MySQL\MySQL_Connector.cpp">
       <Filter>MySQL</Filter>
@@ -11,18 +10,18 @@
     <ClCompile Include="Boost\Boost_Connector.cpp">
       <Filter>Boost</Filter>
     </ClCompile>
+    <ClCompile Include="Auth.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Commands.hpp" />
-    <ClInclude Include="Config.hpp" />
-    <ClInclude Include="Items.hpp" />
-    <ClInclude Include="Logs.hpp" />
+    <ClInclude Include="Command.hpp" />
+    <ClInclude Include="Log.hpp" />
     <ClInclude Include="MySQL\MySQL_Connector.hpp">
       <Filter>MySQL</Filter>
     </ClInclude>
     <ClInclude Include="Boost\Boost_Connector.hpp">
       <Filter>Boost</Filter>
     </ClInclude>
+    <ClInclude Include="Auth.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="MySQL">

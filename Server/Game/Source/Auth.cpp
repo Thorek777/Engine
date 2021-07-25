@@ -8,8 +8,11 @@ void Login(std::string login, std::string password)
 
 	while (row = mysql_fetch_row(res))
 	{
-		if (!row[0] || !row[1]) // Protection against Core crash (NULL).
+		if (!row[0] || !row[1])
+		{
+			SendLog(1, "NullPointer detected! Caused by: Login function (empty row[0] or row[1]).");
 			goto end;
+		}
 
 		if (login != row[0] || password != row[1])
 		{

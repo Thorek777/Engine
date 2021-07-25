@@ -161,6 +161,7 @@
     <ClCompile Include="Auth.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Utils\Boost\Boost_Connector.cpp" />
     <ClCompile Include="Utils\Log.cpp" />
     <ClCompile Include="Utils\MySQL\MySQL_Func.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="Auth.hpp" />
     <ClInclude Include="Command.hpp" />
     <ClInclude Include="Item.hpp" />
+    <ClInclude Include="Player.hpp" />
     <ClInclude Include="Utils\Boost\Boost_Connector.hpp" />
     <ClInclude Include="Utils\Log.hpp" />
     <ClInclude Include="Utils\MySQL\MySQL_Func.h" />

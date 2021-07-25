@@ -14,6 +14,7 @@
     <ClCompile Include="Utils\Boost\Boost_Connector.cpp">
       <Filter>Utils\Boost</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Utils">
@@ -39,5 +40,6 @@
     <ClInclude Include="Utils\Boost\Boost_Connector.hpp">
       <Filter>Utils\Boost</Filter>
     </ClInclude>
+    <ClInclude Include="Player.hpp" />
   </ItemGroup>
 </Project>

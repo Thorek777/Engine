@@ -3,10 +3,18 @@
 #include "Utils/MySQL/MySQL_Func.h"
 #include "Utils/Log.hpp"
 #include "Command.hpp"
+#include "Player.hpp"
 #include "Item.hpp"
 
 RegisterNewCommand CreateItem(int id, int count)
 {
+	// If player (currently account) doesn't have at least third level of the permission:
+	if (GetPlayerPrivileges() < 3)
+	{
+		std::cout << "\n" << "You don't have enough permission." << "\n";
+		return;
+	}
+
 	if (!id || !count)
 		return;
 

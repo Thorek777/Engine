@@ -1,6 +1,7 @@
 #include "Utils/MySQL/MySQL_Func.h"
 #include "Utils/Log.hpp"
 #include "Command.hpp"
+#include "Player.hpp"
 #include "Item.hpp"
 #include "Auth.hpp"
 
@@ -18,6 +19,7 @@ int Start()
 {
 	CleanUp();
 	// MySQL::Connect("127.0.0.1", 3306, "root", "", "account");
+	// GetPlayerPrivileges();
 	// LoadItem(); // Must be before CreateItem function!
 	// Login("Test", "1234");
 	// CreateItem(19, 1);

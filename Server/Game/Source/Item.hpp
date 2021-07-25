@@ -1,5 +1,7 @@
 #pragma once
 
-vector<int> item;
+#include <vector>
+
+extern std::vector<int> item;
 
 void LoadItem();

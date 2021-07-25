@@ -1,23 +1,25 @@
-#include "../../Common/Namespaces.hpp"
-#include "../../Common/D_Includes.hpp"
-#include "../../Common/O_Includes.hpp"
+#include <iostream>
+
+#include "Utils/MySQL/MySQL_Func.h"
+#include "Utils/Log.hpp"
+#include "Command.hpp"
+#include "Item.hpp"
 
 RegisterNewCommand CreateItem(int id, int count)
 {
-	base = "player";
 	if (!id || !count)
 		return;
 
 	// If ID isn't found in loaded items vector, item will not be created:
 	if (!std::count(item.begin(), item.end(), id))
 	{
-		cout << "Item not found.";
+		std::cout << "Item not found." << "\n";
 		return;
 	}
 
-	auto id_s = to_string(id);
-	auto count_s = to_string(count);
-	MySQL_ExecuteQuery("insert into item (id, count) values ('" + id_s + "', '" + count_s + "')");
-	MySQL_Clear();
-	SendLog(0, "Created new item. ID: " + id_s + ", Count: " + count_s + ".");
+	if (conf_db != "player")
+		MySQL::SetDatabase("player");
+
+	MySQL::ExecuteQuery("insert into item_player (id, count) values ('" + std::to_string(id) + "', '" + std::to_string(count) + "')");
+	SendLog(0, "Created new item. ID: " + std::to_string(id) + ", Count: " + std::to_string(count) + ".");
 }

@@ -1,29 +1,33 @@
-#include "../../Common/Namespaces.hpp"
-#include "../../Common/D_Includes.hpp"
-#include "../../Common/O_Includes.hpp"
+#include <iostream>
 
-void Login(string login, string password)
+#include "Utils/MySQL/MySQL_Func.h"
+#include "Utils/Log.hpp"
+
+void Login(std::string login, std::string password)
 {
-	base = "account";
-	MySQL_ExecuteQuery("select login, password from account");
+	if (conf_db != "account")
+		MySQL::SetDatabase("account");
 
-	while (row = mysql_fetch_row(res2))
+	MySQL::ExecuteQuery("select login, password from account");
+
+	while (row = mysql_fetch_row(res))
 	{
-		if (!row[0] || !row[1]) // Protection against Core crash (NULL).
+		if (!row[0] || !row[1])
+		{
+			SendLog(1, "NullPointer detected! Caused by: Login function (empty row[0] or row[1]).");
 			goto end;
+		}
 
 		if (login != row[0] || password != row[1])
 		{
 		end:
-			cout << "Login or password isn't correct." << "\n";
+			std::cout << "Login or password isn't correct." << "\n";
 			return;
 		}
 		else
 		{
-			cout << "Login and password is correct." << "\n";
+			std::cout << "Login and password is correct." << "\n";
 			SendLog(0, "Login step has been completed successfully. Login: " + login + ".");
 		}
 	}
-
-	MySQL_Clear();
 }

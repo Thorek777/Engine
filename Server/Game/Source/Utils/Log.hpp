@@ -1,3 +1,3 @@
 #pragma once
 
-void SendLog(int type, string log);
+void SendLog(int type, std::string log);

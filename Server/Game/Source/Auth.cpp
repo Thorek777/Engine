@@ -1,13 +1,12 @@
-#include "../../Common/Namespaces.hpp"
 #include "../../Common/D_Includes.hpp"
 #include "../../Common/O_Includes.hpp"
 
-void Login(string login, string password)
+void Login(std::string login, std::string password)
 {
-	base = "account";
-	MySQL_ExecuteQuery("select login, password from account");
+	MySQL::SetDatabse("account");
+	MySQL::ExecuteQuery("select login, password from account");
 
-	while (row = mysql_fetch_row(res2))
+	while (row = mysql_fetch_row(res))
 	{
 		if (!row[0] || !row[1]) // Protection against Core crash (NULL).
 			goto end;
@@ -15,15 +14,15 @@ void Login(string login, string password)
 		if (login != row[0] || password != row[1])
 		{
 		end:
-			cout << "Login or password isn't correct." << "\n";
+			std::cout << "Login or password isn't correct." << "\n";
 			return;
 		}
 		else
 		{
-			cout << "Login and password is correct." << "\n";
+			std::cout << "Login and password is correct." << "\n";
 			SendLog(0, "Login step has been completed successfully. Login: " + login + ".");
 		}
 	}
 
-	MySQL_Clear();
+	MySQL::Clear();
 }

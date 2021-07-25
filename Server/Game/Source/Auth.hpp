@@ -1,3 +1,3 @@
 #pragma once
 
-void Login(string login, string password);
+void Login(std::string login, std::string password);

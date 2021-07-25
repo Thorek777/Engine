@@ -49,12 +49,33 @@ namespace MySQL
 	{
 		err = mysql_query(conn, query.c_str());
 		res = mysql_store_result(conn);
-		
-		if (err)
+
+		if (res != 0) // Protection against NullPointer.
 		{
-			error = mysql_error(conn);
-			SendLog(1, "Query execute failed:" + error + ".");
-			mysql_free_result(res);
+			int total_rows = 0;
+			total_rows = mysql_num_rows(res);
+			if (total_rows != 0) // If total rows isn't 0.
+			{
+				if (err)
+				{
+					error = mysql_error(conn);
+					SendLog(1, "Query execute failed:" + error + ".");
+					mysql_free_result(res);
+					exit(1);
+				}
+				else
+				{
+					SendLog(0, "Query has been sent (" + query + ")!");
+				}
+			}
+			else
+			{
+				SendLog(1, "Query has been sent: (" + query + ") but its value is 0.");
+				exit(0);
+			}
+		}
+		else
+		{
 			exit(1);
 		}
 	}

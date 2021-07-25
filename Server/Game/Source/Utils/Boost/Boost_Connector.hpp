@@ -1,6 +1,3 @@
 #pragma once
 
-namespace Boost
-{
-	int ExecuteConnect();
-}
+int Boost_ExecuteConnect();

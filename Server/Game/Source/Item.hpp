@@ -1,5 +1,5 @@
 #pragma once
 
-std::vector<int> item;
+vector<int> item;
 
 void LoadItem();

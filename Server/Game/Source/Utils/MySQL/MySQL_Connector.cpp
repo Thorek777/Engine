@@ -1,32 +1,22 @@
+#include "../../../../Common/Namespaces.hpp"
 #include "../../../../Common/D_Includes.hpp"
 #include "../../../../Common/O_Includes.hpp"
 
-namespace MySQL
+void MySQL_ExecuteQuery(string query)
 {
-	void Connect(const char* host, const char* login, const char* password, int port)
+	MYSQL* conn = mysql_init(0);
+	conn = mysql_real_connect(conn, "localhost", "root", "", base, 3306, NULL, 0);
+	if (conn)
 	{
-		conn = mysql_real_connect(conn, host, login, password, database, port, NULL, 0);
-		if (conn)
-		{
-			SendLog(0, "Successfully connected with database!");
-		}
-		else
-		{
-			SendLog(1, "Connection with database was failed.");
-			exit(0);
-		}
-	}
+		SendLog(0, "Successfully connected with database!");
 
-	void ExecuteQuery(std::string query)
-	{
-		if (conn && query.length() > 0)
+		if (query.length() > 0)
 		{
 			int qstate = mysql_query(conn, query.c_str());
 			if (!qstate)
 			{
-				// int total_rows = 0;
-				uint64_t total_rows = 0;
-				res = mysql_store_result(conn);
+				int total_rows = 0;
+				MYSQL_RES* res = mysql_store_result(conn);
 				total_rows = mysql_num_rows(res);
 				if (total_rows == 0)
 				{
@@ -35,26 +25,30 @@ namespace MySQL
 				}
 				else
 				{
+					res2 = res;
 					SendLog(0, "Query has been sent (" + query + ")!");
-					// mysql_close(conn);
 				}
 			}
 			else
 			{
-				std::string error = mysql_error(conn);
+				string error = mysql_error(conn);
 				SendLog(1, "Query hasn't been sent: " + error + ".");
 				exit(0);
 			}
 		}
 	}
-
-	void SetDatabse(const char* current_database)
+	else
 	{
-		database = current_database;
+		SendLog(1, "Connection with database was failed.");
+		exit(0);
 	}
+}
 
-	void Clear()
-	{
-		mysql_free_result(res);
-	}
+void MySQL_Clear()
+{
+	if (res2 != 0)
+		res2 = 0;
+
+	if (base != 0)
+		base = 0;
 }

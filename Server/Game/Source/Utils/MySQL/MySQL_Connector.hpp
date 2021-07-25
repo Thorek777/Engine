@@ -1,14 +1,8 @@
 #pragma once
 
-MYSQL* conn = mysql_init(0);
 MYSQL_ROW row;
-MYSQL_RES* res;
-const char* database;
+MYSQL_RES* res2;
+const char* base;
 
-namespace MySQL
-{
-	void Connect(const char* host, const char* login, const char* password, int port);
-	void ExecuteQuery(std::string query);
-	void SetDatabse(const char* current_database);
-	void Clear();
-}
+void MySQL_ExecuteQuery(string query);
+void MySQL_Clear();

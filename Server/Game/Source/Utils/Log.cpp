@@ -1,9 +1,10 @@
+#include "../../../Common/Namespaces.hpp"
 #include "../../../Common/D_Includes.hpp"
 #include "../../../Common/O_Includes.hpp"
 
 #pragma warning(disable: 4996)
 
-void SendLog(int type, std::string log)
+void SendLog(int type, string log)
 {
 	time_t c_time;
 	struct tm* ptr;
@@ -13,19 +14,19 @@ void SendLog(int type, std::string log)
 
 	if (type == 0) // Normal log.
 	{
-		std::ofstream file("N-Logs.txt", std::ios_base::app);
+		ofstream file("N-Logs.txt", ios_base::app);
 		file << data << log << "\n" << "\n";
 		file.close();
 
-		std::cout << "Log generated! Check N-Logs.txt file." << "\n";
+		cout << "Log generated! Check N-Logs.txt file." << "\n";
 	}
 	else if (type == 1) // Error log.
 	{
-		std::ofstream file("E-Logs.txt", std::ios_base::app);
+		ofstream file("E-Logs.txt", ios_base::app);
 		file << data << log << "\n" << "\n";
 		file.close();
 
-		std::cout << "Log generated! Check E-Logs.txt file." << "\n";
+		cout << "Log generated! Check E-Logs.txt file." << "\n";
 	}
 	else // Unknown log, fix.
 	{

@@ -9,8 +9,8 @@
 
 int Start()
 {
-	CleanUpLog();
-	MySQL::Connect("127.0.0.1", 3306, "root", "", "account");
-	IsPlayerExistOnAccount("Thorek");
+	DeleteLog();
+	// MySQL::Connect("127.0.0.1", 3306, "root", "", "account");
+	// IsPlayerExistOnAccount("Thorek");
 	return 0;
 }

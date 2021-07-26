@@ -9,7 +9,7 @@
 RegisterNewCommand CreateItem(int id, int count)
 {
 	// If player (currently account) doesn't have at least third level of the permission:
-	if (GetPlayerPrivileges() < 3)
+	if (GetPlayerPrivilege() < 3)
 	{
 		std::cout << "\n" << "You don't have enough permission." << "\n";
 		return;

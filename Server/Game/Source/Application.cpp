@@ -18,10 +18,6 @@ bool CleanUp()
 int Start()
 {
 	CleanUp();
-	// MySQL::Connect("127.0.0.1", 3306, "root", "", "account");
-	// GetPlayerPrivileges();
-	// LoadItem(); // Must be before CreateItem function!
-	// Login("Test", "1234");
-	// CreateItem(19, 1);
+	MySQL::Connect("127.0.0.1", 3306, "root", "", "account");
 	return 0;
 }

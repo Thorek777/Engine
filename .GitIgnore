@@ -1,2 +1,5 @@
-.vs/
-extern/
+.VS/
+Extern/
+Server/Game/Output/
+Server/Game/Source/N-Log.txt
+Server/Game/Source/E-Log.txt

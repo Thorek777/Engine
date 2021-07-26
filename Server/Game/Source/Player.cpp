@@ -6,8 +6,8 @@
 
 //
 // To do: Fix searching e.g. 2 entries in a table:
-// 1 1 Thorek	<- Entry that will be found (in player table).
-// 1 2 Thorek2	<- Entry that not will be found (in player table).
+// 1 1 Thorek  <- Entry that will be found (in player table).
+// 1 2 Thorek2 <- Entry that not will be found (in player table).
 //
 
 bool IsPlayerExistOnAccount(std::string login)

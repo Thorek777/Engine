@@ -10,7 +10,7 @@
 // 1 2 Thorek2 <- Entry that not will be found (in player table).
 //
 
-bool IsPlayerExistOnAccount(std::string login)
+void IsPlayerExistOnAccount(std::string login)
 {
 	// So, we choose "player" database to retrieve data from table with the same name:
 	MySQL::SetDatabase("player");
@@ -23,7 +23,7 @@ bool IsPlayerExistOnAccount(std::string login)
 	while (row = mysql_fetch_row(res))
 	{
 		if (!row[0] || !row[1] || !row[2]) // Protection against NullPointer.
-			return false;
+			break;
 
 		std::string row0_player = row[0]; // We save account_id to string variable.
 		std::string row2_player = row[2]; // We save name to string variable.
@@ -39,14 +39,14 @@ bool IsPlayerExistOnAccount(std::string login)
 		while (row = mysql_fetch_row(res))
 		{
 			if (!row[0] || !row[1] || !row[2]) // Protection against NullPointer.
-				return false;
+				break;
 
 			std::string row0_account = row[0]; // We save id to string variable.
 			std::string row1_account = row[1]; // We save login to string variable.
 			if (row0_player == row0_account && login == row1_account)
 			{
 				std::cout << "On given account there is a character named: " << row2_player << "\n";
-				return true;
+				break;
 			}
 			else
 			{

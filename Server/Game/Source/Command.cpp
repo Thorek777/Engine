@@ -25,9 +25,7 @@ RegisterNewCommand CreateItem(int id, int count)
 		return;
 	}
 
-	if (conf_db != "player")
-		MySQL::SetDatabase("player");
-
+	MySQL::SetDatabase("player");
 	MySQL::ExecuteQuery("insert into item_player (id, count) values ('" + std::to_string(id) + "', '" + std::to_string(count) + "')");
 	SendLog(0, "Created new item. ID: " + std::to_string(id) + ", Count: " + std::to_string(count) + ".");
 }

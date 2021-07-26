@@ -32,3 +32,11 @@ void SendLog(int type, std::string log)
 		return;
 	}
 }
+
+bool CleanUpLog()
+{
+	if (remove("N-Log.txt") == 0 || (remove("E-Log.txt") == 0))
+		return true;
+	else
+		return false;
+}

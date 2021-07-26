@@ -1,4 +1,4 @@
 #pragma once
 
 int GetPlayerPrivilege();
-bool IsPlayerExistOnAccount(std::string login);
+void IsPlayerExistOnAccount(std::string login);

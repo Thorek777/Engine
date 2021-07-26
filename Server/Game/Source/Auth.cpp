@@ -5,11 +5,13 @@
 
 void Login(std::string login, std::string password)
 {
-	if (conf_db != "account")
-		MySQL::SetDatabase("account");
-
+	MySQL::SetDatabase("account");
 	MySQL::ExecuteQuery("select login, password from account");
 
+	// This should be remembered:
+	// row[0] - id;
+	// row[1] - login;
+	// row[2] - password.
 	while (row = mysql_fetch_row(res))
 	{
 		if (!row[0] || !row[1])

@@ -12,7 +12,6 @@ std::string conf_login;
 std::string conf_password;
 
 std::string error = mysql_error(conn);
-
 int err = 0;
 
 namespace MySQL
@@ -82,6 +81,7 @@ namespace MySQL
 
 	void SetDatabase(std::string current_db)
 	{
-		MySQL::Connect(conf_ip, conf_port, conf_login, conf_password, current_db);
+		if (current_db != conf_db) // If current_db isn't conf_db.
+			MySQL::Connect(conf_ip, conf_port, conf_login, conf_password, current_db);
 	}
 }

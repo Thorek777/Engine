@@ -7,11 +7,12 @@ std::vector<int> item;
 
 void LoadItem()
 {
-	if (conf_db != "player")
-		MySQL::SetDatabase("player");
-
+	MySQL::SetDatabase("player");
 	MySQL::ExecuteQuery("select * from item_proto");
 
+	// This should be remembered:
+	// row[0] - id;
+	// row[1] - name;
 	while (row = mysql_fetch_row(res))
 	{
 		int row0 = atoi(row[0]);

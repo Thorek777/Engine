@@ -5,19 +5,12 @@
 #include "Item.hpp"
 #include "Auth.hpp"
 
-bool CleanUp()
-{
-	if (remove("N-Log.txt") == 0 || (remove("E-Log.txt") == 0))
-		return true;
-	else
-		return false;
-}
-
 #define Start main
 
 int Start()
 {
-	CleanUp();
+	CleanUpLog();
 	MySQL::Connect("127.0.0.1", 3306, "root", "", "account");
+	IsPlayerExistOnAccount("Thorek");
 	return 0;
 }

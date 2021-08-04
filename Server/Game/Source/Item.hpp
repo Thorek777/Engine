@@ -4,4 +4,7 @@
 
 extern std::vector<int> item;
 
-void LoadItem();
+namespace Item
+{
+	void Load();
+}

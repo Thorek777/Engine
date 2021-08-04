@@ -5,16 +5,16 @@
     <ClCompile Include="Utils\Log.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="Utils\MySQL\MySQL_Func.cpp">
-      <Filter>Utils\MySQL</Filter>
-    </ClCompile>
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Auth.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Utils\Boost\Boost_Connector.cpp">
       <Filter>Utils\Boost</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Utils\MySQL\MySQL_Func.cpp">
+      <Filter>Utils\MySQL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Utils">
@@ -31,15 +31,15 @@
     <ClInclude Include="Utils\Log.hpp">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="Utils\MySQL\MySQL_Func.h">
-      <Filter>Utils\MySQL</Filter>
-    </ClInclude>
     <ClInclude Include="Auth.hpp" />
     <ClInclude Include="Command.hpp" />
     <ClInclude Include="Item.hpp" />
+    <ClInclude Include="Player.hpp" />
     <ClInclude Include="Utils\Boost\Boost_Connector.hpp">
       <Filter>Utils\Boost</Filter>
     </ClInclude>
-    <ClInclude Include="Player.hpp" />
+    <ClInclude Include="Utils\MySQL\MySQL_Func.h">
+      <Filter>Utils\MySQL</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

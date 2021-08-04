@@ -1,4 +1,7 @@
 #pragma once
 
-int GetPlayerPrivilege();
-void IsPlayerExistOnAccount(std::string login);
+namespace Player
+{
+	int GetPrivilege();
+	int GetCharCount(std::string n);
+}

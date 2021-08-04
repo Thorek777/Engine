@@ -1,16 +1,39 @@
 #include "Utils/MySQL/MySQL_Func.h"
 #include "Utils/Log.hpp"
-#include "Command.hpp"
-#include "Player.hpp"
-#include "Item.hpp"
-#include "Auth.hpp"
 
 #define Start main
+
+struct Deleter
+{
+	void operator()(MYSQL_RES* res2)
+	{
+		mysql_free_result(res2);
+	}
+};
+
+using unique_res = std::unique_ptr<MYSQL_RES, Deleter>;
 
 int Start()
 {
 	DeleteLog();
-	// MySQL::Connect("127.0.0.1", 3306, "root", "", "account");
-	// IsPlayerExistOnAccount("Thorek");
+
+	MYSQL_ROW row2;
+	MySQL::Connect("127.0.0.1", "root", "", "account", 3307);
+	mysql_query(conn, "select * from account");
+	unique_res res2(nullptr);
+	res2.reset(mysql_store_result(conn));
+
+	while (row = mysql_fetch_row(res2.get()))
+	{
+		std::cout << row[1] << "\n";
+	}
+
+	MySQL::ExecuteQuery("select * from account");
+
+	while (row2 = mysql_fetch_row(res))
+	{
+		std::cout << row2[1] << "\n";
+	}
+
 	return 0;
 }

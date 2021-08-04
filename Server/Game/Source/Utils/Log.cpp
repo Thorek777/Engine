@@ -35,7 +35,7 @@ void SendLog(int type, std::string log)
 
 bool DeleteLog()
 {
-	if (remove("N-Log.txt") == 0 || (remove("E-Log.txt") == 0))
+	if (remove("N-Log.txt") == 0 || remove("E-Log.txt") == 0)
 		return true;
 	else
 		return false;

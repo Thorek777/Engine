@@ -1,3 +1,8 @@
 #pragma once
 
-void Login(std::string login, std::string password);
+#include <iostream>
+
+namespace Auth
+{
+	void Login(std::string login, std::string password);
+}

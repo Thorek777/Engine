@@ -1,35 +1,36 @@
-#include <iostream>
-
 #include "Utils/MySQL/MySQL_Func.h"
 #include "Utils/Log.hpp"
 
-void Login(std::string login, std::string password)
+namespace Auth
 {
-	MySQL::SetDatabase("account");
-	MySQL::ExecuteQuery("select login, password from account");
-
-	// This should be remembered:
-	// row[0] - id;
-	// row[1] - login;
-	// row[2] - password.
-	while (row = mysql_fetch_row(res))
+	void Login(std::string login, std::string password)
 	{
-		if (!row[0] || !row[1])
-		{
-			SendLog(1, "NullPointer detected! Caused by: Login function (empty row[0] or row[1]).");
-			goto end;
-		}
+		MySQL::SetDatabase("account");
+		MySQL::ExecuteQuery("select login, password from account");
 
-		if (login != row[0] || password != row[1])
+		// This should be remembered:
+		// row[0] - id;
+		// row[1] - login;
+		// row[2] - password.
+		while (row = mysql_fetch_row(res))
 		{
-		end:
-			std::cout << "Login or password isn't correct." << "\n";
-			return;
-		}
-		else
-		{
-			std::cout << "Login and password is correct." << "\n";
-			SendLog(0, "Login step has been completed successfully. Login: " + login + ".");
+			if (!row[0] || !row[1])
+			{
+				SendLog(1, "NullPointer detected! Caused by: Login function (empty row[0] or row[1]).");
+				goto end;
+			}
+
+			if (login != row[0] || password != row[1])
+			{
+			end:
+				std::cout << "Login or password isn't correct." << "\n";
+				return;
+			}
+			else
+			{
+				std::cout << "Login and password is correct." << "\n";
+				SendLog(0, "Login step has been completed successfully. Login: " + login + ".");
+			}
 		}
 	}
 }

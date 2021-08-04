@@ -1,4 +1,4 @@
-#include "MySQL_Func.h"
+#include "MySQL_Func.hpp"
 #include "../Log.hpp"
 
 MYSQL* conn;

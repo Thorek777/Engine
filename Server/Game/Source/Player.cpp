@@ -2,7 +2,7 @@
 #include <sstream>
 #include <string>
 
-#include "Utils/MySQL/MySQL_Func.h"
+#include "Utils/MySQL/MySQL_Func.hpp"
 
 namespace Player
 {

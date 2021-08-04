@@ -38,7 +38,7 @@
     <ClInclude Include="Utils\Boost\Boost_Connector.hpp">
       <Filter>Utils\Boost</Filter>
     </ClInclude>
-    <ClInclude Include="Utils\MySQL\MySQL_Func.h">
+    <ClInclude Include="Utils\MySQL\MySQL_Func.hpp">
       <Filter>Utils\MySQL</Filter>
     </ClInclude>
   </ItemGroup>

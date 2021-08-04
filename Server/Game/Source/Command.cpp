@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "Utils/MySQL/MySQL_Func.h"
+#include "Utils/MySQL/MySQL_Func.hpp"
 #include "Utils/Log.hpp"
 #include "Command.hpp"
 #include "Player.hpp"

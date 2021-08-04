@@ -1,4 +1,4 @@
-#include "Utils/MySQL/MySQL_Func.h"
+#include "Utils/MySQL/MySQL_Func.hpp"
 #include "Utils/Log.hpp"
 
 #define Start main

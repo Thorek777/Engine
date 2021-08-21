@@ -4,5 +4,5 @@
 
 namespace Auth
 {
-	void Login(std::string login, std::string password);
+	int Login(std::string login, std::string password);
 }

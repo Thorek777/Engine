@@ -1,7 +1,8 @@
 #pragma once
 
+#include <string>
+
 namespace Player
 {
-	int GetPrivilege();
 	int GetCharCount(std::string n);
 }

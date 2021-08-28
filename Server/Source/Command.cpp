@@ -13,7 +13,7 @@ RegisterNewCommand CreateItem(int id, int count)
 		return;
 	}
 
-	if (!std::count(item.begin(), item.end(), id))
+	if (!std::count(item_proto_item.begin(), item_proto_item.end(), id))
 	{
 		std::cout << "Item not found." << "\n";
 		return;

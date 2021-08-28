@@ -3,7 +3,7 @@
 #include "Item.hpp"
 #include "MySQL.hpp"
 
-std::vector<int> item;
+std::vector<int> item_proto_item;
 
 namespace Item
 {
@@ -12,19 +12,12 @@ namespace Item
 		MySQL::SetDatabase("player");
 		MySQL::ExecuteQuery("select * from item_proto");
 
-		// row[0] - id;
-		// row[1] - name.
+		// row[0] = id,
+		// row[1] = name.
 		while (row = mysql_fetch_row(res))
 		{
 			int row0 = atoi(row[0]);
-			item.push_back(row0);
-
-			/*
-			for (int i = 0; i < item.size(); i++)
-			{
-				std::cout << item[i] << std::endl;
-			}
-			*/
+			item_proto_item.push_back(row0);
 		}
 	}
 }

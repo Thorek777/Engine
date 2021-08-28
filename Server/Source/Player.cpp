@@ -5,8 +5,8 @@ namespace Player
 {
 	int GetCharCount(std::string n)
 	{
-		MYSQL_ROW local_row;
 		int count = 0;
+		MYSQL_ROW local_row;
 		MySQL::SetDatabase("player");
 		MySQL::ExecuteQuery("select * from player");
 

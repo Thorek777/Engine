@@ -54,7 +54,8 @@ namespace Network
 		int client_length = sizeof(client);
 		char buf[1024] = { 0 };
 		std::string text_1;
-		std::array<std::string, 3> costam;
+		std::array<std::string, 3> costam = { "" };
+		int send_ok;
 
 		while (true)
 		{
@@ -80,6 +81,15 @@ namespace Network
 			{
 				int i = 0;
 				int j = 0;
+				int counter = 0;
+
+				while (buf[++i] != 0)
+				{
+					counter++;
+				}
+
+				buf[counter + 1] = ' ';
+				i = 0;
 
 				while (buf[++i] != '\0')
 				{
@@ -101,27 +111,48 @@ namespace Network
 
 				switch (GetPacket(costam[0]))
 				{
-					case PACKET_TYPES::AUTH_LOGIN:
+				case PACKET_TYPES::AUTH_LOGIN:
+				{
+					if (costam[1] != "" && costam[2] != "")
 					{
-						// std::cout << costam[1] << '\n';
-						// std::cout << costam[2] << '\n';
+						int a_status = Auth::Login(costam[1], costam[2]);
 
-						if (costam[1] != "" && costam[2] != "")
-						{
-							Auth::Login(costam[1], costam[2]);
-							costam[0] = "";
-							costam[1] = "";
-							costam[2] = "";
+						if (!a_status) {
+							send_ok = sendto(in, "auth_succes", 12 + 1, 0, (sockaddr*)&client, sizeof(client));
+							if (send_ok == SOCKET_ERROR)
+							{
+								std::cout << "That didn't work! " << WSAGetLastError() << '\n';
+							}
 						}
-					}
-					break;
+						else {
+							send_ok = sendto(in, "auth_failure", 13 + 1, 0, (sockaddr*)&client, sizeof(client));
+							if (send_ok == SOCKET_ERROR)
+							{
+								std::cout << "That didn't work! " << WSAGetLastError() << '\n';
+							}
+						}
 
-					case PACKET_TYPES::WRONG_PACKET:
-					{
-						costam[0] = "";
-						costam[1] = "";
-						costam[2] = "";
 					}
+					else
+					{
+						send_ok = sendto(in, "wrong_args", 10 + 1, 0, (sockaddr*)&client, sizeof(client));
+					}
+					costam[0] = "";
+					costam[1] = "";
+					costam[2] = "";
+				}
+				break;
+
+				case PACKET_TYPES::WRONG_PACKET:
+					std::cout << costam[0] << '\n';
+					send_ok = sendto(in, "wrong_command", 256, 0, (sockaddr*)&client, sizeof(client));
+					if (send_ok == SOCKET_ERROR)
+					{
+						std::cout << "That didn't work! " << WSAGetLastError() << '\n';
+					}
+					costam[0] = "";
+					costam[1] = "";
+					costam[2] = "";
 					break;
 				}
 			}

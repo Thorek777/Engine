@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "mysql.h"
+#include "../../Extern/MySQL/mysql.h"
 
 extern MYSQL* conn;
 extern MYSQL_ROW row;

@@ -2,7 +2,7 @@
 
 #include <vector>
 
-extern std::vector<int> item;
+extern std::vector<int> item_proto_item;
 
 namespace Item
 {

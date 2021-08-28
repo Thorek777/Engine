@@ -73,16 +73,16 @@ namespace MySQL
 			MySQL::Connect(conf_ip, conf_login, conf_password, current_db, conf_port);
 		}
 	}
-
-	/*
-	struct Deleter
-	{
-		void operator()(MYSQL_RES* res2)
-		{
-			mysql_free_result(res2);
-		}
-	};
-
-	using unique_res = std::unique_ptr<MYSQL_RES, Deleter>;
-	*/
 }
+
+/*
+struct Deleter
+{
+	void operator()(MYSQL_RES* res2)
+	{
+		mysql_free_result(res2);
+	}
+};
+
+using unique_res = std::unique_ptr<MYSQL_RES, Deleter>;
+*/

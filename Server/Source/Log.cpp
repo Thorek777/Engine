@@ -19,16 +19,14 @@ namespace Log
 			std::ofstream file("Syslog.txt", std::ios_base::app);
 			file << data << log << '\n' << '\n';
 			file.close();
-
-			std::cout << "Log generated! Check ""Syslog.txt"" file." << '\n';
+			std::cout << "Log generated! Check 'Syslog.txt' file." << '\n';
 		}
 		else if (type == 1)
 		{
 			std::ofstream file("Syserr.txt", std::ios_base::app);
 			file << data << log << '\n' << '\n';
 			file.close();
-
-			std::cout << "Error generated! Check ""Syserr.txt"" file." << '\n';
+			std::cout << "Error generated! Check 'Syserr.txt' file." << '\n';
 		}
 	}
 

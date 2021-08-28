@@ -1,5 +1,4 @@
 #include "Log.hpp"
-#include "Auth.hpp"
 #include "MySQL.hpp"
 #include "Network.hpp"
 

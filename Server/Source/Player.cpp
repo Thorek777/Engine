@@ -1,14 +1,13 @@
 #include "MySQL.hpp"
-#include "Player.hpp"
 
 namespace Player
 {
 	int GetCharCount(std::string n)
 	{
-		int count = 0;
-		MYSQL_ROW local_row;
 		MySQL::SetDatabase("player");
 		MySQL::ExecuteQuery("select * from player");
+		MYSQL_ROW local_row;
+		int count = 0;
 
 		while (local_row = mysql_fetch_row(res))
 		{

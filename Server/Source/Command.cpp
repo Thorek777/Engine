@@ -1,18 +1,9 @@
-#include <string>
-#include <iostream>
-
 #include "Log.hpp"
 #include "Item.hpp"
 #include "MySQL.hpp"
-#include "Command.hpp"
 
-RegisterNewCommand CreateItem(int id, int count)
+void CreateItem(int id, int count)
 {
-	if (!id || !count)
-	{
-		return;
-	}
-
 	if (!std::count(item_proto_item.begin(), item_proto_item.end(), id))
 	{
 		std::cout << "Item not found." << "\n";

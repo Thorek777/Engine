@@ -25,7 +25,6 @@ namespace MySQL
 		}
 
 		conn = mysql_init(0);
-		// mysql_options(conn, MYSQL_OPT_COMPRESS, 0);
 
 		if (!mysql_real_connect(conn, ip.c_str(), login.c_str(), password.c_str(), db.c_str(), port, NULL, 0))
 		{
@@ -74,15 +73,3 @@ namespace MySQL
 		}
 	}
 }
-
-/*
-struct Deleter
-{
-	void operator()(MYSQL_RES* res2)
-	{
-		mysql_free_result(res2);
-	}
-};
-
-using unique_res = std::unique_ptr<MYSQL_RES, Deleter>;
-*/

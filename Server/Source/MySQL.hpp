@@ -1,8 +1,13 @@
-#pragma once
+#ifndef __MYSQL_HPP__
+#define __MYSQL_HPP__
 
 #include <string>
 
+#ifdef _WIN32
 #include "../../Extern/MySQL/mysql.h"
+#else
+#include <mysql/mysql.h>
+#endif
 
 extern MYSQL* conn;
 extern MYSQL_ROW row;
@@ -16,3 +21,4 @@ namespace MySQL
 	void ExecuteQuery(std::string query);
 	void SetDatabase(std::string current_db);
 }
+#endif

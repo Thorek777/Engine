@@ -2,10 +2,24 @@
 
 #include "Log.hpp"
 
+#ifdef _WIN32
 #pragma warning(disable: 4996)
+#endif
 
 namespace Log
 {
+	bool Delete()
+	{
+		if (remove("Syslog.txt") == 0 || remove("Syserr.txt") == 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 	void Send(int type, std::string log)
 	{
 		time_t c_time;
@@ -27,18 +41,6 @@ namespace Log
 			file << data << log << '\n' << '\n';
 			file.close();
 			std::cout << "Error generated! Check 'Syserr.txt' file." << '\n';
-		}
-	}
-
-	bool Delete()
-	{
-		if (remove("Syslog.txt") == 0 || remove("Syserr.txt") == 0)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
 		}
 	}
 }

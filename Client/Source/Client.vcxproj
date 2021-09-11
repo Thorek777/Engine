@@ -102,11 +102,13 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>D:\Project(s)\In C or C++\Engine\Extern\Boost\Source;C:\Program Files\MySQL\MySQL Server 8.0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Project(s)\In C or C++\Engine\Extern\Boost\Source;C:\Program Files\MySQL\MySQL Server 8.0\include;D:\Project%28s%29\In C or C++\Engine\Extern\Irrlicht\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Program Files\MySQL\MySQL Server 8.0\lib;D:\Project%28s%29\In C or C++\Engine\Extern\Irrlicht\lib\Win64-visualStudio</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libmysql.lib;Irrlicht.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -136,13 +138,13 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>D:\Project(s)\In C or C++\Engine\Extern\Boost\Source;C:\Program Files\MySQL\MySQL Server 8.0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Project(s)\In C or C++\Engine\Extern\Boost\Source;C:\Program Files\MySQL\MySQL Server 8.0\include;D:\Project%28s%29\In C or C++\Engine\Extern\Irrlicht\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Program Files\MySQL\MySQL Server 8.0\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libmysql.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Program Files\MySQL\MySQL Server 8.0\lib;D:\Project%28s%29\In C or C++\Engine\Extern\Irrlicht\lib\Win64-visualStudio</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libmysql.lib;Irrlicht.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

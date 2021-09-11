@@ -4,5 +4,5 @@
 
 int Start()
 {
-	Network::Test();
+	Network::OpenConnection();
 }

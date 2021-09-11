@@ -2,5 +2,5 @@
 
 namespace Network
 {
-	int Test();
+	int OpenConnection();
 }

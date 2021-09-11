@@ -84,7 +84,7 @@ namespace Network
 #endif
 		char buf[1024];
 		std::string text_1 = "";
-		std::array<std::string, 3> costam = { "" };
+		std::array<std::string, 3> input = { "" };
 		int send_ok = 0;
 
 		while (true)
@@ -130,7 +130,7 @@ namespace Network
 				}
 				else
 				{
-					costam[j] = text_1;
+					input[j] = text_1;
 					text_1 = "";
 
 					if (j != 2)
@@ -140,12 +140,12 @@ namespace Network
 				}
 			}
 
-			switch (GetPacket(costam[0]))
+			switch (GetPacket(input[0]))
 			{
 			case PACKET_TYPES::AUTH_LOGIN:
-				if (costam[1] != "" && costam[2] != "")
+				if (input[1] != "" && input[2] != "")
 				{
-					int a_status = Auth::Login(costam[1], costam[2]);
+					int a_status = Auth::Login(input[1], input[2]);
 
 					if (!a_status)
 					{
@@ -183,13 +183,13 @@ namespace Network
 					send_ok = sendto(in, "wrong_args", 10 + 1, 0, (sockaddr*)&client, sizeof(client));
 				}
 
-				costam[0] = "";
-				costam[1] = "";
-				costam[2] = "";
+				input[0] = "";
+				input[1] = "";
+				input[2] = "";
 				break;
 
 			case PACKET_TYPES::WRONG_PACKET:
-				std::cout << costam[0] << '\n';
+				std::cout << input[0] << '\n';
 				send_ok = sendto(in, "wrong_command", 256, 0, (sockaddr*)&client, sizeof(client));
 
 #ifdef _WIN32
@@ -203,9 +203,9 @@ namespace Network
 #endif
 				}
 
-				costam[0] = "";
-				costam[1] = "";
-				costam[2] = "";
+				input[0] = "";
+				input[1] = "";
+				input[2] = "";
 				break;
 			}
 		}

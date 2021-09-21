@@ -1,5 +1,5 @@
-#ifndef __COMMAND_HPP__
-#define __COMMAND_HPP__
+#ifndef COMMAND_HPP
+#define COMMAND_HPP
 
 void CreateItem(int id, int quantity);
 #endif

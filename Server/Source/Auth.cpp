@@ -1,15 +1,21 @@
 #include "Log.hpp"
+#include "Auth.hpp"
 #include "MySQL.hpp"
 
 namespace Auth
 {
-	int Login(std::string login, std::string password)
+	int Login(const std::string& login, const std::string& password)
 	{
+		if (auth_status)
+		{
+			std::cout << "You have already been logged in!";
+			return 1;
+		}
+
 		MySQL::SetDatabase("account");
 		MySQL::ExecuteQuery("select login, password from account");
-		bool auth_status = false;
 
-		while (row = mysql_fetch_row(res))
+		while (row == mysql_fetch_row(res))
 		{
 			if (login == row[0] && password == row[1])
 			{
@@ -22,12 +28,8 @@ namespace Auth
 		{
 			return 1;
 		}
-		else
-		{
-			Log::Send(0, "Login step has been completed successfully. Login: " + login + ".");
-			return 0;
-		}
 
+		Log::Send(0, "Login step has been completed successfully. Login: " + login + ".");
 		return 0;
 	}
 }

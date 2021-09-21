@@ -1,10 +1,12 @@
-#ifndef __AUTH_HPP__
-#define __AUTH_HPP__
+#ifndef AUTH_HPP
+#define AUTH_HPP
 
 #include <string>
 
+inline bool auth_status = false;
+
 namespace Auth
 {
-	int Login(std::string login, std::string password);
+	int Login(const std::string& login, const std::string& password);
 }
 #endif

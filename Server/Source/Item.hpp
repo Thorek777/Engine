@@ -1,5 +1,5 @@
-#ifndef __ITEM_HPP__
-#define __ITEM_HPP__
+#ifndef ITEM_HPP
+#define ITEM_HPP
 
 #include <vector>
 

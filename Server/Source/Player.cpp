@@ -1,8 +1,9 @@
+/*
 #include "MySQL.hpp"
 
 namespace Player
 {
-	int GetCharCount(std::string n)
+	int GetCharCount(const std::string n)
 	{
 		MySQL::SetDatabase("player");
 		MySQL::ExecuteQuery("select * from player");
@@ -20,3 +21,4 @@ namespace Player
 		return count;
 	}
 }
+*/

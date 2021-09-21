@@ -1,5 +1,5 @@
-#ifndef __NETWORK_HPP__
-#define __NETWORK_HPP__
+#ifndef NETWORK_HPP
+#define NETWORK_HPP
 
 namespace Network
 {

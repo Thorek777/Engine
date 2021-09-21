@@ -1,11 +1,11 @@
-#ifndef __LOG_HPP__
-#define __LOG_HPP__
+#ifndef LOG_HPP
+#define LOG_HPP
 
 #include <iostream>
 
 namespace Log
 {
 	bool Delete();
-	void Send(int type, std::string log);
+	void Send(int type, const std::string& log);
 }
 #endif

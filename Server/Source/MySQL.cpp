@@ -1,75 +1,67 @@
-#include "Log.hpp"
+﻿#include "Log.hpp"
 #include "MySQL.hpp"
 
-int err = 0;
 MYSQL* conn;
 MYSQL_ROW row;
 MYSQL_RES* res;
-std::string conf_ip, conf_login, conf_password, conf_db;
-unsigned int conf_port;
+std::string config[4];
+unsigned int config_port;
 
 namespace MySQL
 {
-	void Connect(std::string ip, std::string login, std::string password, std::string db, unsigned int port)
+	int Connect(const std::string& ip, const std::string& login, const std::string& password,
+	            const std::string& db,
+	            const unsigned int port)
 	{
-		conf_ip = ip;
-		conf_login = login;
-		conf_password = password;
-		conf_db = db;
-		conf_port = port;
+		config[0] = ip;
+		config[1] = login;
+		config[2] = password;
+		config[3] = db;
+		config_port = port;
 
-		if (conn != 0)
+		if (conn != nullptr)
 		{
-			Log::Send(0, "MySQL has been restared.");
 			mysql_close(conn);
 		}
 
-		conn = mysql_init(0);
+		conn = mysql_init(nullptr);
 
-		if (!mysql_real_connect(conn, ip.c_str(), login.c_str(), password.c_str(), db.c_str(), port, NULL, 0))
+		if (!mysql_real_connect(conn, ip.c_str(), login.c_str(), password.c_str(), db.c_str(), port, nullptr, 0))
 		{
 			Log::Send(1, "Unable to connect with MySQL.");
-			exit(1);
+			return 1;
 		}
+
+		return 0;
 	}
 
-	void ExecuteQuery(std::string query)
+	int ExecuteQuery(const std::string& query)
 	{
-		err = mysql_query(conn, query.c_str());
+		const int err = mysql_query(conn, query.c_str());
 		res = mysql_store_result(conn);
-		std::string err2 = mysql_error(conn);
+		const std::string err2 = mysql_error(conn);
 
 		if (query.find("select") != std::string::npos)
 		{
 			if (!res)
 			{
-				Log::Send(1, "An error has ocurred, code: " + err2 + ".");
-				exit(1);
-			}
-
-			uint64_t total_rows = mysql_num_rows(res);
-
-			if (err != 0)
-			{
-				goto end;
+				Log::Send(1, "An error has occurred, code: " + err2 + ".");
+				return 1;
 			}
 		}
-		else
+
+		if (err != 0)
 		{
-			if (err != 0)
-			{
-			end:
-				Log::Send(1, "Failed to send query. Error code: " + err2 + ".");
-				exit(1);
-			}
+			Log::Send(1, "Failed to send query. Error code: " + err2 + ".");
+			return 1;
 		}
+
+		return 0;
 	}
 
-	void SetDatabase(std::string current_db)
+	void SetDatabase(const std::string& current_db)
 	{
-		if (current_db != conf_db)
-		{
-			MySQL::Connect(conf_ip, conf_login, conf_password, current_db, conf_port);
-		}
+		if (current_db != config[3])
+			Connect(config[0], config[1], config[2], current_db, config_port);
 	}
 }

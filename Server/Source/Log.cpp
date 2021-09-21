@@ -1,46 +1,46 @@
+#include <chrono>
 #include <fstream>
 
 #include "Log.hpp"
-
-#ifdef _WIN32
-#pragma warning(disable: 4996)
-#endif
 
 namespace Log
 {
 	bool Delete()
 	{
-		if (remove("Syslog.txt") == 0 || remove("Syserr.txt") == 0)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return remove("Syslog.txt") == 0 || 0 == remove("Syserr.txt") ? true : false;
 	}
 
-	void Send(int type, std::string log)
+	std::ofstream operator<<(const std::ofstream&,
+	                         const std::chrono::local_time<std::common_type_t<
+		                         std::chrono::duration<long long, std::ratio<1, 10000000>>, std::chrono::duration<long
+			                         long>>>&)
 	{
-		time_t c_time;
-		struct tm* ptr;
-		time(&c_time);
-		ptr = localtime(&c_time);
-		char* data = asctime(ptr);
+		return {};
+	}
+
+	void Send(const int type, const std::string& log)
+	{
+		const auto now = std::chrono::current_zone()->to_local(std::chrono::system_clock::now());
 
 		if (type == 0)
 		{
 			std::ofstream file("Syslog.txt", std::ios_base::app);
-			file << data << log << '\n' << '\n';
+			file << now << ":	" << log << '\n' << '\n';
 			file.close();
-			std::cout << "Log generated! Check 'Syslog.txt' file." << '\n';
+
+#ifdef _DEBUG
+			std::cout << "Log generated!" << '\n';
+#endif
 		}
-		else if (type == 1)
+		else
 		{
 			std::ofstream file("Syserr.txt", std::ios_base::app);
-			file << data << log << '\n' << '\n';
+			file << now << ":	" << log << '\n' << '\n';
 			file.close();
-			std::cout << "Error generated! Check 'Syserr.txt' file." << '\n';
+
+#ifdef _DEBUG
+			std::cout << "Error generated!" << '\n';
+#endif
 		}
 	}
 }

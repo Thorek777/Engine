@@ -25,6 +25,7 @@
     <ClInclude Include="Log.hpp" />
     <ClInclude Include="MySQL.hpp" />
     <ClInclude Include="Network.hpp" />
+    <ClInclude Include="Packet.hpp" />
     <ClInclude Include="Player.hpp" />
   </ItemGroup>
   <ItemGroup>

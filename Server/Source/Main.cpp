@@ -2,9 +2,7 @@
 #include "MySQL.hpp"
 #include "Network.hpp"
 
-#define Start main
-
-int Start()
+int main()
 {
 	Log::Delete();
 

@@ -120,7 +120,7 @@ namespace Network
 
 			switch (GetPacket(input[0]))
 			{
-			case PacketTypes::AUTH_LOGIN:
+			case PacketTypes::CS_AUTH_PACKET:
 				if (!input[1].empty() && !input[2].empty())
 				{
 					if (const int status = Auth::Login(input[1], input[2]); status)
@@ -137,7 +137,7 @@ namespace Network
 				input[2] = "";
 				break;
 
-			case PacketTypes::WRONG_PACKET:
+			case PacketTypes::UNKNOWN_PACKET:
 				// std::cout << input[0] << '\n';
 				std::cout << "Unknown command!" << '\n';
 

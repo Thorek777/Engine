@@ -4,14 +4,16 @@
 
 enum class PacketTypes
 {
-	WRONG_PACKET,
-	AUTH_LOGIN,
+	UNKNOWN_PACKET,
+
+	// Client -> Server packet(s):
+	CS_AUTH_PACKET,
 };
 
 inline PacketTypes GetPacket(const std::string& command)
 {
 	if (command == "login")
-		return PacketTypes::AUTH_LOGIN;
+		return PacketTypes::CS_AUTH_PACKET;
 
-	return PacketTypes::WRONG_PACKET;
+	return PacketTypes::UNKNOWN_PACKET;
 }

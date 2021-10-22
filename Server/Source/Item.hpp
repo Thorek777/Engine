@@ -1,5 +1,4 @@
-#ifndef ITEM_HPP
-#define ITEM_HPP
+#pragma once
 
 #include <vector>
 
@@ -9,4 +8,3 @@ namespace Item
 {
 	void Load();
 }
-#endif

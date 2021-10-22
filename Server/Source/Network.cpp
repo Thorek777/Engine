@@ -1,32 +1,23 @@
-// Include(s) (and more) for Windows:
 #ifdef _WIN32
-#include <WinSock2.h>
-
-#include "WS2tcpip.h"
-
-#pragma comment(lib, "ws2_32.lib")
-#endif
-
-// Include(s) (and more) for Linux:
-#ifndef _WIN32
-#include <cstring>
-
-#include "../../netdb.h"
-#include "../../unistd.h"
-#include "../../arpa/inet.h"
-#include "../../include/x86_64-linux-gnu/sys/socket.h"
-
-#define WSAGetLastError 0
+	#include <WinSock2.h>
+	#include "WS2tcpip.h"
+	#pragma comment(lib, "ws2_32.lib")
+#else
+	#include <cstring>
+	#include "../../netdb.h"
+	#include "../../unistd.h"
+	#include "../../arpa/inet.h"
+	#include "../../include/x86_64-linux-gnu/sys/socket.h"
 #endif
 
 #include <array>
-
-#include "Auth.hpp"
 #include "Log.hpp"
+#include "Auth.hpp"
 #include "Packet.hpp"
 
 namespace Network
 {
+#ifdef _WIN32
 	int StartWinsock()
 	{
 		WSADATA data;
@@ -34,12 +25,13 @@ namespace Network
 
 		if (const int ws_ok = WSAStartup(version, &data); ws_ok != 0)
 		{
-			std::cout << "Can't start Winsock: " << ws_ok << ".";
+			std::cout << "Can't start Winsock! (" << ws_ok << ").";
 			return 1;
 		}
 
 		return 0;
 	}
+#endif
 
 	int OpenConnection()
 	{
@@ -66,7 +58,9 @@ namespace Network
 
 		if (bind(in, reinterpret_cast<sockaddr*>(&server_hint), sizeof server_hint) == -1)
 		{
-			std::cout << "Can't bind socket: " << WSAGetLastError() << ".";
+#ifdef _WIN32
+			std::cout << "Can't bind socket! (" << WSAGetLastError() << ").";
+#endif
 			return 1;
 		}
 
@@ -79,7 +73,7 @@ namespace Network
 #endif
 
 		std::string text_1;
-		std::array<std::string, 3> input = {""};
+		std::array<std::string, 3> input = { "" };
 
 		while (true)
 		{
@@ -89,29 +83,23 @@ namespace Network
 			const int bytes_in = recvfrom(in, buf, 1024, 0, reinterpret_cast<sockaddr*>(&client), &client_length);
 
 			if (bytes_in == -1)
-			{
-				std::cout << "Fatal error: -1." << '\n';
-			}
+				std::cout << "Fatal error! (-1)." << '\n';
 
 			char client_ip[256] = {};
 			inet_ntop(AF_INET, &client.sin_addr, client_ip, 256);
 			std::string string_client_ip = client_ip;
 			std::string string_buf = buf;
-			std::cout << "Message recv from: " << string_client_ip << ", " << string_buf << ".";
+			std::cout << "Message recv from: " << client_ip << ", " << string_buf << '\n';
 
 			if (buf[0] != '/')
-			{
 				continue;
-			}
 
 			int i = 0;
 			int j = 0;
 			int counter = 0;
 
 			while (buf[++i] != 0)
-			{
 				counter++;
-			}
 
 			buf[counter + 1] = ' ';
 			i = 0;
@@ -119,18 +107,14 @@ namespace Network
 			while (buf[++i] != '\0')
 			{
 				if (buf[i] != ' ' && buf[i] != ';')
-				{
 					text_1 += buf[i];
-				}
 				else
 				{
 					input[j] = text_1;
 					text_1 = "";
 
 					if (j != 2)
-					{
 						j++;
-					}
 				}
 			}
 
@@ -141,10 +125,10 @@ namespace Network
 				{
 					if (const int status = Auth::Login(input[1], input[2]); status)
 					{
+#ifdef _WIN32
 						if (bytes_in == -1)
-						{
-							std::cout << "That didn't work: " << WSAGetLastError() << "." << '\n';
-						}
+							std::cout << "That didn't work! (" << WSAGetLastError() << ")." << '\n';
+#endif
 					}
 				}
 
@@ -154,12 +138,13 @@ namespace Network
 				break;
 
 			case PacketTypes::WRONG_PACKET:
-				std::cout << input[0] << '\n';
+				// std::cout << input[0] << '\n';
+				std::cout << "Unknown command!" << '\n';
 
+#ifdef _WIN32
 				if (bytes_in == -1)
-				{
-					std::cout << "That didn't work: " << WSAGetLastError() << "." << '\n';
-				}
+					std::cout << "That didn't work! (" << WSAGetLastError() << ")." << '\n';
+#endif
 
 				input[0] = "";
 				input[1] = "";

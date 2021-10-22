@@ -9,9 +9,7 @@ unsigned int config_port;
 
 namespace MySQL
 {
-	int Connect(const std::string& ip, const std::string& login, const std::string& password,
-	            const std::string& db,
-	            const unsigned int port)
+	int Connect(const std::string& ip, const std::string& login, const std::string& password, const std::string& db, const unsigned int port)
 	{
 		config[0] = ip;
 		config[1] = login;
@@ -20,16 +18,14 @@ namespace MySQL
 		config_port = port;
 
 		if (conn != nullptr)
-		{
 			mysql_close(conn);
-		}
 
 		conn = mysql_init(nullptr);
 
 		if (!mysql_real_connect(conn, ip.c_str(), login.c_str(), password.c_str(), db.c_str(), port, nullptr, 0))
 		{
 			Log::Send(1, "Unable to connect with MySQL.");
-			return 1;
+			exit(1);
 		}
 
 		return 0;

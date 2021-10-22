@@ -1,10 +1,8 @@
-#ifndef __AUTH_HPP__
-#define __AUTH_HPP__
+#pragma once
 
 #include <string>
 
 namespace Auth
 {
-	int Login(std::string login, std::string password);
+	int Login(const std::string& login, const std::string& password);
 }
-#endif

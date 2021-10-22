@@ -1,46 +1,35 @@
+#include <chrono>
 #include <fstream>
-
 #include "Log.hpp"
 
-#ifdef _WIN32
 #pragma warning(disable: 4996)
-#endif
 
 namespace Log
 {
 	bool Delete()
 	{
-		if (remove("Syslog.txt") == 0 || remove("Syserr.txt") == 0)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return remove("Syslog.txt") == 0 || 0 == remove("Syserr.txt") ? true : false;
 	}
 
-	void Send(int type, std::string log)
+	void Send(const int type, const std::string& log)
 	{
-		time_t c_time;
-		struct tm* ptr;
-		time(&c_time);
-		ptr = localtime(&c_time);
-		char* data = asctime(ptr);
+		const time_t now = time(nullptr);
+		const tm* gmtm = gmtime(&now);
+		const char* dt = asctime(gmtm);
 
 		if (type == 0)
 		{
 			std::ofstream file("Syslog.txt", std::ios_base::app);
-			file << data << log << '\n' << '\n';
+			std::cout << log << '\n';
+			file << dt << log << '\n' << '\n';
 			file.close();
-			std::cout << "Log generated! Check 'Syslog.txt' file." << '\n';
 		}
-		else if (type == 1)
+		else
 		{
 			std::ofstream file("Syserr.txt", std::ios_base::app);
-			file << data << log << '\n' << '\n';
+			std::cout << log << '\n';
+			file << dt << log << '\n' << '\n';
 			file.close();
-			std::cout << "Error generated! Check 'Syserr.txt' file." << '\n';
 		}
 	}
 }

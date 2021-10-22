@@ -1,5 +1,3 @@
-#ifndef __COMMAND_HPP__
-#define __COMMAND_HPP__
+#pragma once
 
 void CreateItem(int id, int quantity);
-#endif

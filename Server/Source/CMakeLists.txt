@@ -1,22 +1,15 @@
 project(main)
 cmake_minimum_required(VERSION 3.10)
+set(CMAKE_CXX_STANDARD 20)
+set(CXX_STANDARD_REQUIRED YES)
+
+file(GLOB SOURCES
+	*.cpp
+	*.h
+)
 
 add_executable(main
-  Main.cpp
-  Auth.cpp
-  Auth.hpp
-  Command.cpp
-  Command.hpp
-  Item.cpp
-  Item.hpp
-  Log.cpp
-  Log.hpp
-  MySQL.cpp
-  MySQL.hpp
-  Network.cpp
-  Network.hpp
-  Player.cpp
-  Player.hpp
+	${SOURCES}
 )
 
 execute_process(COMMAND mysql_config --cflags OUTPUT_VARIABLE MYSQL_CFLAGS OUTPUT_STRIP_TRAILING_WHITESPACE)

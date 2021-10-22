@@ -1,8 +1,6 @@
-#ifndef __NETWORK_HPP__
-#define __NETWORK_HPP__
+#pragma once
 
 namespace Network
 {
 	int OpenConnection();
 }
-#endif

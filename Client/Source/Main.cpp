@@ -1,8 +1,7 @@
+#include <iostream>
 #include "Network.hpp"
 
-#define Start main
-
-int Start()
+int main()
 {
 	Network::OpenConnection();
 }

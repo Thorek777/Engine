@@ -1,7 +1,7 @@
 #include <algorithm>
-#include "Log.hpp"
-#include "Item.hpp"
-#include "MySQL.hpp"
+#include "Log.h"
+#include "Item.h"
+#include "MySQL.h"
 
 void CreateItem(const int id, const int quantity)
 {

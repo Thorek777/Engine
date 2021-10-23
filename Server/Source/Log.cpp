@@ -1,6 +1,6 @@
 #include <chrono>
 #include <fstream>
-#include "Log.hpp"
+#include "Log.h"
 
 #pragma warning(disable: 4996)
 

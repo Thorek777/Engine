@@ -1,6 +1,6 @@
-#include "Log.hpp"
-#include "Auth.hpp"
-#include "MySQL.hpp"
+#include "Log.h"
+#include "Auth.h"
+#include "MySQL.h"
 
 namespace Auth
 {

@@ -19,13 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Auth.hpp" />
-    <ClInclude Include="Command.hpp" />
-    <ClInclude Include="Item.hpp" />
-    <ClInclude Include="Log.hpp" />
-    <ClInclude Include="MySQL.hpp" />
-    <ClInclude Include="Network.hpp" />
-    <ClInclude Include="Packet.hpp" />
+    <ClInclude Include="Auth.h" />
+    <ClInclude Include="Command.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="Log.h" />
+    <ClInclude Include="MySQL.h" />
+    <ClInclude Include="Network.h" />
+    <ClInclude Include="Packet.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Auth.cpp" />

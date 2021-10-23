@@ -1,6 +1,6 @@
-#include "Log.hpp"
-#include "MySQL.hpp"
-#include "Network.hpp"
+#include "Log.h"
+#include "MySQL.h"
+#include "Network.h"
 
 int main()
 {

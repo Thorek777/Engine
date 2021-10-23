@@ -1,5 +1,5 @@
-#include "Item.hpp"
-#include "MySQL.hpp"
+#include "Item.h"
+#include "MySQL.h"
 
 std::vector<int> item_proto;
 

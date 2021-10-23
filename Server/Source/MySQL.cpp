@@ -1,5 +1,5 @@
-﻿#include "Log.hpp"
-#include "MySQL.hpp"
+﻿#include "Log.h"
+#include "MySQL.h"
 
 MYSQL* conn;
 MYSQL_ROW row;
@@ -9,7 +9,8 @@ unsigned int config_port;
 
 namespace MySQL
 {
-	int Connect(const std::string& ip, const std::string& login, const std::string& password, const std::string& db, const unsigned int port)
+	int Connect(const std::string& ip, const std::string& login, const std::string& password, const std::string& db,
+	            const unsigned int port)
 	{
 		config[0] = ip;
 		config[1] = login;

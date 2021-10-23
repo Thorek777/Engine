@@ -1,7 +1,7 @@
 #ifdef _WIN32
-	#include <WinSock2.h>
-	#include "WS2tcpip.h"
-	#pragma comment(lib, "ws2_32.lib")
+#include <WinSock2.h>
+#include "WS2tcpip.h"
+#pragma comment(lib, "ws2_32.lib")
 #else
 	#include <cstring>
 	#include "../../netdb.h"
@@ -11,9 +11,9 @@
 #endif
 
 #include <array>
-#include "Log.hpp"
-#include "Auth.hpp"
-#include "Packet.hpp"
+#include "Log.h"
+#include "Auth.h"
+#include "Packet.h"
 
 namespace Network
 {
@@ -73,7 +73,7 @@ namespace Network
 #endif
 
 		std::string text_1;
-		std::array<std::string, 3> input = { "" };
+		std::array<std::string, 3> input = {""};
 
 		while (true)
 		{
@@ -94,9 +94,7 @@ namespace Network
 			if (buf[0] != '/')
 				continue;
 
-			int i = 0;
-			int j = 0;
-			int counter = 0;
+			int i = 0, j = 0, counter = 0;
 
 			while (buf[++i] != 0)
 				counter++;
@@ -138,7 +136,6 @@ namespace Network
 				break;
 
 			case PacketTypes::UNKNOWN_PACKET:
-				// std::cout << input[0] << '\n';
 				std::cout << "Unknown command!" << '\n';
 
 #ifdef _WIN32

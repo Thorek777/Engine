@@ -1,9 +1,6 @@
 #include <conio.h>
-#include <iostream>
 #include <Windows.h>
 #include "PlayerChat.h"
-
-// int chatIsOpen;
 
 int InputKeyboard()
 {
@@ -11,10 +8,7 @@ int InputKeyboard()
 	{
 		if (GetKeyState(VK_RETURN) & 0x8000)
 		{
-			// if (chatIsOpen == 0)
-				Player::Chat::Open();
-
-			// chatIsOpen = 1;
+			Player::Chat::Open();
 			break; // Without this, while (true) is active all the time.
 		}
 	}

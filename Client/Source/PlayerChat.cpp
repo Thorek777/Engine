@@ -1,7 +1,6 @@
 #include <string>
 #include <iostream>
 #include "Network.h"
-#include "PlayerChat.h"
 #include "InputKeyboard.h"
 
 #pragma comment (lib, "ws2_32.lib")

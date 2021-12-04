@@ -1,6 +1,10 @@
+/*
+ * Author: Thorek
+ */
+
 #include "Network.h"
-#include "InputKeyboard.h"
 // #include "MiniDump.h"
+#include "InputKeyboard.h"
 
 int main()
 {

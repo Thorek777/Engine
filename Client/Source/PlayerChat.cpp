@@ -1,3 +1,7 @@
+/*
+ * Author: Thorek
+ */
+
 #include <string>
 #include <iostream>
 #include "Network.h"

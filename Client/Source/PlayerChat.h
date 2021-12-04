@@ -1,3 +1,7 @@
+/*
+ * Author: Thorek
+ */
+
 #pragma once
 
 namespace Player::Chat

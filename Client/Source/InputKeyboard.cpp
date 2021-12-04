@@ -1,3 +1,7 @@
+/*
+ * Author: Thorek
+ */
+
 #include <conio.h>
 #include <Windows.h>
 #include "PlayerChat.h"
@@ -19,5 +23,7 @@ int InputKeyboard()
 void ClearKeyboardBuffer()
 {
 	while (_kbhit())
+	{
 		(void)_getch(); // Muted C6031 warning.
+	}
 }

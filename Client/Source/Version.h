@@ -1,6 +1,10 @@
+/*
+ * Author: Thorek
+ */
+
 #pragma once
 
-inline int GET_VERSION()
+inline int GetVer()
 {
 	return 10000;
 }

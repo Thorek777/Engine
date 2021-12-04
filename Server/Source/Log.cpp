@@ -1,6 +1,10 @@
+/*
+ * Author: Thorek
+ */
+
 #include <chrono>
 #include <fstream>
-#include "Log.h"
+#include <iostream>
 
 #pragma warning(disable: 4996)
 
@@ -8,7 +12,7 @@ namespace Log
 {
 	bool Delete()
 	{
-		return remove("Syslog.txt") == 0 || 0 == remove("Syserr.txt") ? true : false;
+		return remove("Syslog.txt") == 0 || 0 == remove("Syserr.txt");
 	}
 
 	void Send(const int type, const std::string& log)

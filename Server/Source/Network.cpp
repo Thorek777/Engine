@@ -1,7 +1,11 @@
+/*
+ * Author: Thorek
+ */
+
 #ifdef _WIN32
-#include <WinSock2.h>
-#include "WS2tcpip.h"
-#pragma comment(lib, "ws2_32.lib")
+	#include <WinSock2.h>
+	#include "WS2tcpip.h"
+	#pragma comment(lib, "ws2_32.lib")
 #else
 	#include <cstring>
 	#include "../../netdb.h"
@@ -10,10 +14,9 @@
 	#include "../../include/x86_64-linux-gnu/sys/socket.h"
 #endif
 
-#include <array>
-#include "Log.h"
-#include "Auth.h"
+#include "MySQL.h"
 #include "Packet.h"
+#include "Network.h"
 
 namespace Network
 {
@@ -73,17 +76,18 @@ namespace Network
 #endif
 
 		std::string text_1;
-		std::array<std::string, 3> input = {""};
 
 		while (true)
 		{
 			char buf[1024];
 			memset(&client, 0, client_length);
 			memset(buf, 0, 1024);
-			const int bytes_in = recvfrom(in, buf, 1024, 0, reinterpret_cast<sockaddr*>(&client), &client_length);
+			bytes_in = recvfrom(in, buf, 1024, 0, reinterpret_cast<sockaddr*>(&client), &client_length);
 
 			if (bytes_in == -1)
+			{
 				std::cout << "Fatal error! (-1)." << '\n';
+			}
 
 			char client_ip[256] = {};
 			inet_ntop(AF_INET, &client.sin_addr, client_ip, 256);
@@ -92,12 +96,18 @@ namespace Network
 			std::cout << "Message recv from: " << client_ip << ", " << string_buf << '\n';
 
 			if (buf[0] != '/')
+			{
 				continue;
+			}
 
-			int i = 0, j = 0, counter = 0;
+			int i = 0;
+			int j = 0;
+			int counter = 0;
 
 			while (buf[++i] != 0)
+			{
 				counter++;
+			}
 
 			buf[counter + 1] = ' ';
 			i = 0;
@@ -105,49 +115,22 @@ namespace Network
 			while (buf[++i] != '\0')
 			{
 				if (buf[i] != ' ' && buf[i] != ';')
+				{
 					text_1 += buf[i];
+				}
 				else
 				{
 					input[j] = text_1;
 					text_1 = "";
 
 					if (j != 2)
-						j++;
-				}
-			}
-
-			switch (GetPacket(input[0]))
-			{
-			case PacketTypes::CS_AUTH_PACKET:
-				if (!input[1].empty() && !input[2].empty())
-				{
-					if (const int status = Auth::Login(input[1], input[2]); status)
 					{
-#ifdef _WIN32
-						if (bytes_in == -1)
-							std::cout << "That didn't work! (" << WSAGetLastError() << ")." << '\n';
-#endif
+						j++;
 					}
 				}
-
-				input[0] = "";
-				input[1] = "";
-				input[2] = "";
-				break;
-
-			case PacketTypes::UNKNOWN_PACKET:
-				std::cout << "Unknown command!" << '\n';
-
-#ifdef _WIN32
-				if (bytes_in == -1)
-					std::cout << "That didn't work! (" << WSAGetLastError() << ")." << '\n';
-#endif
-
-				input[0] = "";
-				input[1] = "";
-				input[2] = "";
-				break;
 			}
+
+			ParsePacket();
 		}
 	}
 }

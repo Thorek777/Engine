@@ -1,8 +1,12 @@
+/*
+ * Author: Thorek
+ */
+
 #pragma once
 
 #include <string>
 
 namespace Auth
 {
-	int Login(const std::string& login, const std::string& password);
+	auto Login(const std::string& login, const std::string& password) -> int;
 }

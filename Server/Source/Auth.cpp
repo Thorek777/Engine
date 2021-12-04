@@ -1,10 +1,14 @@
+/*
+ * Author: Thorek
+ */
+
 #include "Log.h"
 #include "Auth.h"
 #include "MySQL.h"
 
 namespace Auth
 {
-	int Login(const std::string& login, const std::string& password)
+	auto Login(const std::string& login, const std::string& password) -> int
 	{
 		MySQL::SetDatabase("account");
 		MySQL::ExecuteQuery("select login, password from account");
@@ -20,7 +24,9 @@ namespace Auth
 		}
 
 		if (status)
+		{
 			Log::Send(0, "Login step has been completed successfully by: " + login + ".");
+		}
 		else
 		{
 			Log::Send(0, "Login step hasn't been completed successfully by: " + login + ".");

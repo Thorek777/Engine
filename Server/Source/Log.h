@@ -1,9 +1,13 @@
+/*
+ * Author: Thorek
+ */
+
 #pragma once
 
 #include <iostream>
 
 namespace Log
 {
-	bool Delete();
+	auto Delete() -> bool;
 	void Send(int type, const std::string& log);
 }

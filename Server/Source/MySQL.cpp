@@ -1,4 +1,8 @@
-﻿#include "Log.h"
+﻿/*
+ * Author: Thorek
+ */
+
+#include "Log.h"
 #include "MySQL.h"
 
 MYSQL* conn;
@@ -9,7 +13,10 @@ unsigned int config_port;
 
 namespace MySQL
 {
-	int Connect(const std::string& ip, const std::string& login, const std::string& password, const std::string& db,
+	int Connect(const std::string& ip,
+				const std::string& login,
+				const std::string& password,
+				const std::string& db,
 	            const unsigned int port)
 	{
 		config[0] = ip;
@@ -19,11 +26,20 @@ namespace MySQL
 		config_port = port;
 
 		if (conn != nullptr)
+		{
 			mysql_close(conn);
+		}
 
 		conn = mysql_init(nullptr);
 
-		if (!mysql_real_connect(conn, ip.c_str(), login.c_str(), password.c_str(), db.c_str(), port, nullptr, 0))
+		if (mysql_real_connect(conn,
+							   ip.c_str(),
+							   login.c_str(),
+							   password.c_str(),
+							   db.c_str(),
+							   port,
+							   nullptr,
+							   0) == nullptr)
 		{
 			Log::Send(1, "Unable to connect with MySQL.");
 			exit(1);
@@ -40,7 +56,7 @@ namespace MySQL
 
 		if (query.find("select") != std::string::npos)
 		{
-			if (!res)
+			if (res == nullptr)
 			{
 				Log::Send(1, "An error has occurred, code: " + err2 + ".");
 				return 1;
@@ -59,6 +75,8 @@ namespace MySQL
 	void SetDatabase(const std::string& current_db)
 	{
 		if (current_db != config[3])
+		{
 			Connect(config[0], config[1], config[2], current_db, config_port);
+		}
 	}
 }

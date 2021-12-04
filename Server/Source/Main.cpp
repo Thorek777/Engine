@@ -1,3 +1,7 @@
+/*
+ * Author: Thorek
+ */
+
 #include "Log.h"
 #include "MySQL.h"
 #include "Network.h"

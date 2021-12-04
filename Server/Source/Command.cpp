@@ -1,4 +1,10 @@
+/*
+ * Author: Thorek
+ */
+
+#include <iostream>
 #include <algorithm>
+
 #include "Log.h"
 #include "Item.h"
 #include "MySQL.h"

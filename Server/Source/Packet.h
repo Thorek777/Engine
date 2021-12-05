@@ -40,7 +40,7 @@ inline void ParsePacket()
 		case PacketTypes::HEADER_CS_AUTH:
 			if (!input[1].empty() && !input[2].empty())
 			{
-				if (const int status = Auth::Login(input[1], input[2]); status)
+				if (Auth::Login(input[1], input[2]))
 				{
 					if (bytes_in == -1)
 					{
@@ -61,7 +61,7 @@ inline void ParsePacket()
 		case PacketTypes::HEADER_CS_MOVE:
 			if (!input[1].empty() && !input[2].empty())
 			{
-				if (const int status = Character::Move(stoi(input[1]), stoi(input[2])); status)
+				if (Character::Move(stoi(input[1]), stoi(input[2])))
 				{
 					if (bytes_in == -1)
 					{

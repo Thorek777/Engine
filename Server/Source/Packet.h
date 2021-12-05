@@ -8,12 +8,14 @@
 #include <iostream>
 
 #include "Auth.h"
+#include "Char.h"
 #include "Network.h"
 
 enum class PacketTypes
 {
 	UNKNOWN_PACKET,
 	HEADER_CS_AUTH,
+	HEADER_CS_MOVE,
 };
 
 inline PacketTypes GetPacket(const std::string& command)
@@ -21,6 +23,11 @@ inline PacketTypes GetPacket(const std::string& command)
 	if (command == "login")
 	{
 		return PacketTypes::HEADER_CS_AUTH;
+	}
+
+	if (command == "move")
+	{
+		return PacketTypes::HEADER_CS_MOVE;
 	}
 
 	return PacketTypes::UNKNOWN_PACKET;
@@ -34,6 +41,27 @@ inline void ParsePacket()
 		if (!input[1].empty() && !input[2].empty())
 		{
 			if (const int status = Auth::Login(input[1], input[2]); status)
+			{
+				if (bytes_in == -1)
+				{
+#ifdef _WIN32
+					std::cout << "That didn't work! (" << WSAGetLastError() << ")." << '\n';
+#else
+					return;
+#endif
+				}
+			}
+		}
+
+		input[0] = "";
+		input[1] = "";
+		input[2] = "";
+		break;
+
+	case PacketTypes::HEADER_CS_MOVE:
+		if (!input[1].empty() && !input[2].empty())
+		{
+			if (const int status = Character::Move(stoi(input[1]), stoi(input[2])); status)
 			{
 				if (bytes_in == -1)
 				{

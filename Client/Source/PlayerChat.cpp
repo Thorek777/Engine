@@ -29,7 +29,7 @@ namespace Player::Chat
 				return 1;
 			}
 
-			if (const int send_ok = sendto(out2, message.c_str(), message.size() + 1, 0, reinterpret_cast<sockaddr*>(&server2), sizeof server2); send_ok == SOCKET_ERROR)
+			if (const int send_ok = Network::SendPacket(message); send_ok == SOCKET_ERROR)
 			{
 				std::cout << "That didn't work! (" << WSAGetLastError() << ")." << '\n';
 				std::memset(buf, 0, 1024);

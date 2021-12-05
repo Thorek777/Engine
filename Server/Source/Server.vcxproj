@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Auth.h" />
+    <ClInclude Include="Char.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Log.h" />
@@ -28,6 +29,7 @@
     <ClInclude Include="Packet.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Char.cpp" />
     <ClCompile Include="Auth.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="Item.cpp" />

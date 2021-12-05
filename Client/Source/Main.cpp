@@ -2,9 +2,10 @@
  * Author: Thorek
  */
 
+#include "Char.h"
 #include "Network.h"
 // #include "MiniDump.h"
-#include "InputKeyboard.h"
+// #include "InputKeyboard.h"
 
 int main()
 {
@@ -13,5 +14,6 @@ int main()
 
 	Network::StartWinsock();
 	Network::OpenConnection();
-	InputKeyboard();
+	// InputKeyboard();
+	Character::Move();
 }

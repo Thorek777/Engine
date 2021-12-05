@@ -36,4 +36,10 @@ namespace Network
 		out2 = out;
 		return 0;
 	}
+
+	int SendPacket(std::string packet)
+	{
+		sendto(out2, packet.c_str(), packet.size() + 1, 0, reinterpret_cast<sockaddr*>(&server2), sizeof server2);
+		return 0;
+	}
 }

@@ -1,12 +1,10 @@
-/*
- * Author: Thorek
- */
-
 #include <format>
 #include <iomanip>
 #include <sstream>
+
 #include "Version.h"
 #include "MiniDump.h"
+
 #include <minidumpapiset.h>
 
 #pragma warning(disable: 4996)
@@ -16,16 +14,12 @@ void make_minidump(EXCEPTION_POINTERS* e)
 	const auto hDbgHelp = LoadLibraryA("dbghelp");
 
 	if (hDbgHelp == nullptr)
-	{
 		return;
-	}
 
 	const auto pMiniDumpWriteDump = reinterpret_cast<decltype(&MiniDumpWriteDump)>(GetProcAddress(hDbgHelp, "MiniDumpWriteDump"));
 
 	if (pMiniDumpWriteDump == nullptr)
-	{
 		return;
-	}
 
 	const std::string folder = "logs";
 	CreateDirectoryA(folder.c_str(), nullptr);
@@ -36,9 +30,7 @@ void make_minidump(EXCEPTION_POINTERS* e)
 	const auto hFile = CreateFileA(filename.c_str(), GENERIC_WRITE, FILE_SHARE_READ, nullptr, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, nullptr);
 
 	if (hFile == INVALID_HANDLE_VALUE)
-	{
 		return;
-	}
 
 	MINIDUMP_EXCEPTION_INFORMATION exceptionInfo;
 	exceptionInfo.ThreadId = GetCurrentThreadId();

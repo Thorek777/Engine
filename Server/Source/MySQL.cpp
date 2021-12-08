@@ -1,8 +1,4 @@
-﻿/*
- * Author: Thorek
- */
-
-#include "Log.h"
+﻿#include "Log.h"
 #include "MySQL.h"
 
 MYSQL* conn;
@@ -22,9 +18,7 @@ namespace MySQL
 		config_port = port;
 
 		if (conn != nullptr)
-		{
 			mysql_close(conn);
-		}
 
 		conn = mysql_init(nullptr);
 
@@ -64,8 +58,6 @@ namespace MySQL
 	void SetDatabase(const std::string& current_db)
 	{
 		if (current_db != config[3])
-		{
 			Connect(config[0], config[1], config[2], current_db, config_port);
-		}
 	}
 }

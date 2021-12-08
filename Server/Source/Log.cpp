@@ -1,7 +1,3 @@
-/*
- * Author: Thorek
- */
-
 #include <chrono>
 #include <fstream>
 #include <iostream>

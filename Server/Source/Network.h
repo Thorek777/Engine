@@ -1,7 +1,3 @@
-/*
- * Author: Thorek
- */
-
 #pragma once
 
 #include <array>
@@ -12,4 +8,5 @@ inline std::array<std::string, 3> input = { "" };
 namespace Network
 {
 	auto OpenConnection() -> int;
+	auto ParseText() -> int;
 }

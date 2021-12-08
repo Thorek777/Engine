@@ -1,8 +1,5 @@
-/*
- * Author: Thorek
- */
-
 #include <iostream>
+
 #include "Config.h"
 #include "Network.h"
 

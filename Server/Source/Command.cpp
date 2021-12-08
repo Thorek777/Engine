@@ -1,7 +1,3 @@
-/*
- * Author: Thorek
- */
-
 #include <iostream>
 #include <algorithm>
 

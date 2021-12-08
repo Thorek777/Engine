@@ -1,9 +1,6 @@
-/*
- * Author: Thorek
- */
-
 #include <conio.h>
 #include <Windows.h>
+
 #include "PlayerChat.h"
 
 int InputKeyboard()

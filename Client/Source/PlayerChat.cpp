@@ -1,9 +1,6 @@
-/*
- * Author: Thorek
- */
-
 #include <string>
 #include <iostream>
+
 #include "Network.h"
 #include "InputKeyboard.h"
 

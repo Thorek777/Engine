@@ -1,7 +1,3 @@
-/*
- * Author: Thorek
- */
-
 #pragma once
 
 inline int GetVer()

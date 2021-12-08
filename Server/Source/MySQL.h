@@ -1,11 +1,7 @@
-﻿/*
- * Author: Thorek
- */
-
-#pragma once
+﻿#pragma once
 
 #ifdef _WIN32
-	#include "../../Extern/MySQL/mysql.h"
+	#include "../../../../Extern/MySQL/mysql.h"
 #else
 	#include <mysql/mysql.h>
 #endif
@@ -20,12 +16,7 @@ extern unsigned int config_port;
 
 namespace MySQL
 {
-	auto Connect(const std::string& ip,
-				 const std::string& login,
-				 const std::string& password,
-				 const std::string& db,
-				 unsigned int port) -> int;
-
+	auto Connect(const std::string& ip, const std::string& login, const std::string& password, const std::string& db, unsigned int port) -> int;
 	auto ExecuteQuery(const std::string& query) -> int;
 	void SetDatabase(const std::string& current_db);
 }

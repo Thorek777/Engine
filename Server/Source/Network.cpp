@@ -1,7 +1,3 @@
-/*
- * Author: Thorek
- */
-
 #ifdef _WIN32
 	#include <WinSock2.h>
 	#include "WS2tcpip.h"
@@ -17,6 +13,8 @@
 #include "MySQL.h"
 #include "Packet.h"
 #include "Network.h"
+
+int in;
 
 namespace Network
 {
@@ -43,9 +41,9 @@ namespace Network
 #endif
 
 #ifdef _WIN32
-		const SOCKET in = socket(AF_INET, SOCK_DGRAM, 0);
+		in = socket(AF_INET, SOCK_DGRAM, 0);
 #else
-		const int in = socket(AF_INET, SOCK_DGRAM, 0);
+		in = socket(AF_INET, SOCK_DGRAM, 0);
 #endif
 
 		sockaddr_in server_hint{};
@@ -67,6 +65,12 @@ namespace Network
 			return 1;
 		}
 
+		ParseText();
+		return 0;
+	}
+
+	int ParseText()
+	{
 		sockaddr_in client{};
 
 #ifdef _WIN32
@@ -85,9 +89,7 @@ namespace Network
 			bytes_in = recvfrom(in, buf, 1024, 0, reinterpret_cast<sockaddr*>(&client), &client_length);
 
 			if (bytes_in == -1)
-			{
 				std::cout << "Fatal error! (-1)." << '\n';
-			}
 
 			char client_ip[256] = {};
 			inet_ntop(AF_INET, &client.sin_addr, client_ip, 256);
@@ -96,18 +98,14 @@ namespace Network
 			std::cout << "Message recv from: " << client_ip << ", " << string_buf << '\n';
 
 			if (buf[0] != '/')
-			{
 				continue;
-			}
 
 			int i = 0;
 			int j = 0;
 			int counter = 0;
 
 			while (buf[++i] != 0)
-			{
 				counter++;
-			}
 
 			buf[counter + 1] = ' ';
 			i = 0;
@@ -115,22 +113,19 @@ namespace Network
 			while (buf[++i] != '\0')
 			{
 				if (buf[i] != ' ' && buf[i] != ';')
-				{
 					text_1 += buf[i];
-				}
 				else
 				{
 					input[j] = text_1;
 					text_1 = "";
 
 					if (j != 2)
-					{
 						j++;
-					}
 				}
 			}
 
 			ParsePacket();
+			return 0;
 		}
 	}
 }

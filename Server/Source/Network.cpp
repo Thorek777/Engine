@@ -14,7 +14,11 @@
 #include "Packet.h"
 #include "Network.h"
 
-int in;
+#ifdef _WIN32
+	SOCKET in;
+#else
+	int in;
+#endif
 
 namespace Network
 {
@@ -40,12 +44,7 @@ namespace Network
 		StartWinsock();
 #endif
 
-#ifdef _WIN32
 		in = socket(AF_INET, SOCK_DGRAM, 0);
-#else
-		in = socket(AF_INET, SOCK_DGRAM, 0);
-#endif
-
 		sockaddr_in server_hint{};
 
 #ifdef _WIN32
@@ -95,7 +94,7 @@ namespace Network
 			inet_ntop(AF_INET, &client.sin_addr, client_ip, 256);
 			std::string string_client_ip = client_ip;
 			std::string string_buf = buf;
-			std::cout << "Message recv from: " << client_ip << ", " << string_buf << '\n';
+			std::cout << '\n' << "Message recv from: " << client_ip << ", " << string_buf << '\n';
 
 			if (buf[0] != '/')
 				continue;
@@ -125,7 +124,6 @@ namespace Network
 			}
 
 			ParsePacket();
-			return 0;
 		}
 	}
 }

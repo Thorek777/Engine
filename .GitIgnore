@@ -1,6 +1,5 @@
-.VS
-Extern
-Client/Output
-Server/Output
-Server/Source/Syserr.txt
-Server/Source/Syslog.txt
+.vs
+*.pdb
+*.dll
+*.exe
+Output

@@ -1,7 +1,6 @@
 #include "Log.h"
 #include "Auth.h"
 #include "MySQL.h"
-#include "Network.h"
 
 namespace Auth
 {
@@ -22,11 +21,19 @@ namespace Auth
 
 		if (status)
 		{
+#ifdef _WIN32
+			std::cout << "Login step has been completed successfully by: " + login + "." << '\n';
+#endif
+
 			Log::Send(0, "Login step has been completed successfully by: " + login + ".");
 			// @todo001 - add below sending information about success login to Client.
 		}
 		else
 		{
+#ifdef _WIN32
+			std::cout << "Login step hasn't been completed successfully by: " + login + "." << '\n';
+#endif
+
 			Log::Send(0, "Login step hasn't been completed successfully by: " + login + ".");
 			return 1;
 		}

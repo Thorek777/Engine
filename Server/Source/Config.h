@@ -9,5 +9,5 @@ inline std::map<std::string, std::string> optValue;
 
 namespace Config
 {
-	bool Init();
+	bool Initialize();
 }

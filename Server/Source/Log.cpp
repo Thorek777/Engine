@@ -17,19 +17,28 @@ namespace Log
 		const tm* gmtm = gmtime(&now);
 		const char* dt = asctime(gmtm);
 
-		if (type == 0)
+		switch (type)
 		{
-			std::ofstream file("Syslog.txt", std::ios_base::app);
-			std::cout << log << '\n';
-			file << dt << log << '\n' << '\n';
-			file.close();
-		}
-		else
-		{
-			std::ofstream file("Syserr.txt", std::ios_base::app);
-			std::cout << log << '\n';
-			file << dt << log << '\n' << '\n';
-			file.close();
+			case 0:
+				{
+					std::ofstream file("Syslog.txt", std::ios_base::app);
+					std::cout << log << '\n';
+					file << dt << log << '\n' << '\n';
+					file.close();
+				}
+				break;
+
+			case 1:
+				{
+					std::ofstream file("Syserr.txt", std::ios_base::app);
+					std::cout << log << '\n';
+					file << dt << log << '\n' << '\n';
+					file.close();
+				}
+				break;
+
+			default:
+				break;
 		}
 	}
 }

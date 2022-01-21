@@ -4,6 +4,6 @@
 
 namespace Log
 {
-	auto Delete() -> bool;
+	bool Delete();
 	void Send(int type, const std::string& log);
 }

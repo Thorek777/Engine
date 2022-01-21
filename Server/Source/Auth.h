@@ -4,5 +4,5 @@
 
 namespace Auth
 {
-	auto Login(const std::string& login, const std::string& password) -> int;
+	int Login(const std::string& login, const std::string& password);
 }

@@ -8,11 +8,7 @@ std::string config[5];
 
 namespace MySQL
 {
-    int Connect(const std::string& ip,
-                const std::string& login,
-                const std::string& password,
-                const std::string& db,
-                const unsigned int port)
+	int Connect(const std::string& ip, const std::string& login, const std::string& password, const std::string& db, const unsigned int port)
 	{
 		config[0] = ip;
 		config[1] = login;
@@ -27,11 +23,12 @@ namespace MySQL
 
 		if (mysql_real_connect(conn, ip.c_str(), login.c_str(), password.c_str(), db.c_str(), port, nullptr, 0) == nullptr)
 		{
+			Log::Send(1, "Unable to connect with MySQL.");
+
 #ifdef _WIN32
 			std::cout << "Unable to connect with MySQL." << '\n';
 #endif
 
-			Log::Send(1, "Unable to connect with MySQL.");
 			return 1;
 		}
 
@@ -51,23 +48,21 @@ namespace MySQL
 		{
 			if (!res)
 			{
+				Log::Send(1, "An error has occurred: " + err2 + ".");
+
 #ifdef _WIN32
 				std::cout << "An error has occurred: " + err2 + "." << '\n';
 #endif
-
-				Log::Send(1, "An error has occurred: " + err2 + ".");
-				// return 1;
 			}
 		}
 
 		if (err != 0)
 		{
+			Log::Send(1, "Failed to send query: " + err2 + ".");
+
 #ifdef _WIN32
 			std::cout << "Failed to send query: " + err2 + "." << '\n';
 #endif
-
-			Log::Send(1, "Failed to send query: " + err2 + ".");
-			// return 1;
 		}
 
 		return 0;

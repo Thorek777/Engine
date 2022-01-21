@@ -7,6 +7,6 @@ inline std::array<std::string, 3> input = { "" };
 
 namespace Network
 {
-	auto OpenConnection() -> int;
-	auto ParseText() -> int;
+	int OpenConnection();
+	int ParseText();
 }

@@ -1,13 +1,15 @@
 #ifdef _WIN32
-	#include <WinSock2.h>
-	#include "WS2tcpip.h"
-	#pragma comment(lib, "ws2_32.lib")
+#include <WinSock2.h>
+
+#include "WS2tcpip.h"
+
+#pragma comment(lib, "ws2_32.lib")
 #else
-	#include <cstring>
-	#include "../../netdb.h"
-	#include "../../unistd.h"
-	#include "../../arpa/inet.h"
-	#include "../../include/x86_64-linux-gnu/sys/socket.h"
+#include <cstring>
+#include "../../netdb.h"
+#include "../../unistd.h"
+#include "../../arpa/inet.h"
+#include "../../include/x86_64-linux-gnu/sys/socket.h"
 #endif
 
 #include "MySQL.h"
@@ -15,9 +17,9 @@
 #include "Network.h"
 
 #ifdef _WIN32
-	SOCKET in;
+SOCKET in;
 #else
-	int in;
+int in;
 #endif
 
 namespace Network
@@ -25,7 +27,7 @@ namespace Network
 #ifdef _WIN32
 	int StartWinsock()
 	{
-		WSADATA data;
+		WSADATA data{};
 		constexpr WORD version = MAKEWORD(2, 2);
 
 		if (const int ws_ok = WSAStartup(version, &data); ws_ok != 0)
@@ -110,7 +112,6 @@ namespace Network
 			i = 0;
 
 			while (buf[++i] != '\0')
-			{
 				if (buf[i] != ' ' && buf[i] != ';')
 					text_1 += buf[i];
 				else
@@ -121,7 +122,6 @@ namespace Network
 					if (j != 2)
 						j++;
 				}
-			}
 
 			ParsePacket();
 		}
